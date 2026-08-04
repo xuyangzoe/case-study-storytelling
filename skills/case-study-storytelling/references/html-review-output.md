@@ -55,9 +55,9 @@ Immediately after the story contract, add one compact link to the review decisio
 the reader knows what feedback is needed without reaching the end.
 
 If the foundation check is incomplete, open this section with a prominent, concise
-`Provisional story — foundation incomplete` notice. Link the missing stake, causal
-chain, rise-and-fall source, or ending wisdom to its `GAP-##`. Explain that the plan is
-scaffolding for review, not a claim that the unsupported story is already true.
+`This story is not complete yet` notice. Link the missing stake, cause-and-effect chain,
+real challenge, or ending lesson to its `GAP-##`. Explain that the plan helps the user
+work out the story; it does not claim the missing parts are already true.
 
 ## Navigation and cross-references
 
@@ -113,6 +113,9 @@ Put an evidence-status chip in each slide's upper-right corner:
 Always pair color with text. If four or more statuses appear, add a one-line legend at
 the Story Map header. Let common `supported` states recede so uncertain states identify
 where feedback matters.
+
+Write gaps and review questions in plain language. For example: `The story does not yet
+show what made this project genuinely hard.` Avoid abstract diagnostic jargon.
 
 Rank findings by consequence. Use a short severity label only when it helps triage.
 Reserve the loudest treatment for the single issue that truly blocks the deck; do not

@@ -4,16 +4,17 @@ Treat these as defaults. The creator's latest explicit feedback wins.
 
 ## Core rules
 
-1. **Make an argument around one elephant.** Open with the largest customer or business
-   stake and keep it stable. Let the elephant reveal a deeper form: an early product
+1. **Make an argument around one elephant.** The elephant is the biggest real customer
+   or business consequence—the reason the project matters. Open with it and keep it
+   stable. Let the elephant reveal a deeper form: an early product
    answer may expose the deeper product, organizational, or delivery blocker that still
    prevents the original stake from being resolved. Change the active bottleneck, not
    the subject. Reject any new tension that does not deepen the same causal chain.
-2. **Create an earned rise-and-fall arc.** Show what made the outcome non-inevitable:
-   real resistance, a low point, severe challenge, constraint, uncertainty, tradeoff,
-   rejected assumption, silence, reversal, or failure. Then show the learning and
-   changed action it caused. A genuine failure is powerful but not mandatory. Never
-   manufacture drama or write an uninterrupted accomplishment reel.
+2. **Create an earned rise-and-fall arc.** Show what made success genuinely hard or
+   forced a meaningful change. A routine inconvenience does not count. A real failure
+   is powerful but not mandatory; a serious challenge, tradeoff, rejected assumption,
+   uncertainty, or reversal can carry the arc. Never manufacture drama or write an
+   uninterrupted accomplishment reel.
 3. **Find the five-second turn.** Search for one real, concrete, memorable moment—a
    quote, reaction, silence, rejection, discovery, message, or small decision—that
    concentrates the tension and makes the story feel different afterward. Explain why
@@ -36,7 +37,8 @@ Treat these as defaults. The creator's latest explicit feedback wins.
    material contributions. Show persistence as a costly, evidence-backed decision—not
    a personality claim. If an external event opens the strategic window, show the
    preparation that made it actionable. Avoid both vague “we” and lone-hero framing.
-8. **Name evidence honestly.** Distinguish problem, system, interaction-model, and
+8. **Name evidence honestly.** Every inference must name the source facts it is based
+   on; without a source fact, mark a gap. Distinguish problem, system, interaction-model, and
    feature-priority validation; separate learning from sponsorship, adoption, shipping,
    and business impact. Keep methodology nearby, never inflate unlike counts, and
    distinguish shipped, ready, exploratory, and directional outcomes.
@@ -81,7 +83,7 @@ Use these as diagnostic shapes, not story templates:
 ## Definition of done
 
 - [ ] The opening uses the highest defensible stake, and the argument follows one causal chain.
-- [ ] Real resistance or uncertainty creates rise and fall, and the ending wisdom is earned.
+- [ ] A real challenge makes success uncertain or forces change, and the ending wisdom is earned.
 - [ ] Every necessary slide has one job, one claim-bearing title, and one purposeful artifact.
 - [ ] Decisions appear in causal order, and every transition answers “why next?”
 - [ ] Agency, evidence, outcomes, and confidence horizons are accurate.

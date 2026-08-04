@@ -19,7 +19,7 @@ but it must not weaken the evidence guardrails or replace the core workflow.
 - Never invent a stake, conflict, failure, turning point, consequence, or lesson to
   complete an arc. A plausible story is not a truthful story.
 - Distinguish what shipped from what remained exploratory.
-- Preserve the creator's voice, but replace vague claims with concrete decisions.
+- Preserve the creator's voice, but make claims concrete only with supplied facts.
 - Adapt emphasis to the supplied audience without turning the story into a competency checklist.
 - Do not design or implement the eventual deck. The HTML is only a review surface.
 
@@ -68,17 +68,17 @@ facts:
 
 - the highest defensible customer or business stake for the opening;
 - a causal chain from problem through changed decisions to outcome;
-- a real source of resistance, low point, constraint, uncertainty, tradeoff, rejected
-  assumption, or failure that makes the outcome non-inevitable;
+- a real challenge that made success genuinely hard, threatened the outcome, or forced
+  a meaningful change; routine friction does not count;
 - one specific ending wisdom earned through the project.
 
 If any foundation is absent, still build a useful **provisional plan**. Begin the visible
-output—before diagnosis or slides—with `Provisional story — foundation incomplete` and
-name the missing foundations. Assign each one a stable `GAP-##`, place it where it
-belongs in the sequence, and turn it into a targeted review question. Do not write slide
-claims that depend on facts the user has not provided. Prefer a real failure or lesson
-when one exists, but never force literal failure; credible resistance or uncertainty
-can create the required rise and fall.
+output—before diagnosis or slides—with `This story is not complete yet` and name what is
+missing in plain language. Assign each missing foundation a stable `GAP-##`, place it
+where it belongs, and turn it into a targeted review question. Do not write slide claims
+that depend on facts the user has not provided. Prefer a real failure or lesson when one
+exists, but never force literal failure. If the source shows no challenge that genuinely
+affected the project, mark a gap and ask: `What made this project genuinely hard?`
 
 In `interview` mode, integrate the 2–4 audience signals this case can credibly prove into
 the same diagnosis. Do not repeat the recommended argument as a separate candidate
@@ -135,9 +135,9 @@ Place every story problem where the reader encounters it:
 - **Weak proof/artifact:** attach it to that slide's artifact field.
 - **Cut/merge/move:** show the editorial action on the affected slide.
 
-Give each unresolved truth or evidence item a stable `GAP-##` ID, priority, needed
-evidence, and truthful fallback. Give settled story beats that still need a visual,
-diagram, crop, or animation an `ASSET-##` production item instead. Verify details in
+Give each unresolved truth or evidence item a stable `GAP-##` ID, needed evidence, and
+truthful fallback. Give settled story beats that still need a visual, diagram, crop, or
+animation an `ASSET-##` production item instead. Verify details in
 proportion to narrative consequence: prioritize facts that affect ownership, causality,
 magnitude, or credibility. Never output separate gap, narrative-spine, and slide-plan
 sections. If a problem affects the whole story, place it in the brief diagnosis rather
@@ -147,8 +147,10 @@ Label evidence status:
 
 - `supported`: inspectable evidence supports the claim;
 - `stated-only`: the input asserts it without substantiation;
-- `inferred`: reasonable interpretation, not explicit fact;
+- `inferred`: interpretation based on named source facts; show what it is based on;
 - `missing`: required evidence is absent.
+
+Without a source fact, do not infer. Mark the claim `missing` and create a `GAP-##`.
 
 For an existing deck, map each planned slide to source slides and mark `keep`, `revise`,
 `merge`, `split`, `move`, `replace`, or `new`.
