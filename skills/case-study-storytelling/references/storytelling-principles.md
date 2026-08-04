@@ -9,10 +9,11 @@ Treat these as defaults. The creator's latest explicit feedback wins.
    answer may expose the deeper product, organizational, or delivery blocker that still
    prevents the original stake from being resolved. Change the active bottleneck, not
    the subject. Reject any new tension that does not deepen the same causal chain.
-2. **Create an earned rise-and-fall arc.** Build real progress, resistance, failure,
-   silence, uncertainty, or reversal into the story, then show the learning and changed
-   action it caused. The payoff matters because failure was possible. Never manufacture
-   drama or write an uninterrupted accomplishment reel.
+2. **Create an earned rise-and-fall arc.** Show what made the outcome non-inevitable:
+   real resistance, a low point, severe challenge, constraint, uncertainty, tradeoff,
+   rejected assumption, silence, reversal, or failure. Then show the learning and
+   changed action it caused. A genuine failure is powerful but not mandatory. Never
+   manufacture drama or write an uninterrupted accomplishment reel.
 3. **Find the five-second turn.** Search for one real, concrete, memorable moment—a
    quote, reaction, silence, rejection, discovery, message, or small decision—that
    concentrates the tension and makes the story feel different afterward. Explain why
@@ -79,8 +80,9 @@ Use these as diagnostic shapes, not story templates:
 
 ## Definition of done
 
-- [ ] The audience, primary proof, stable elephant, and deeper blocker form one causal chain.
-- [ ] Real highs, lows, learning, and one supported five-second turn earn the payoff and wisdom.
+- [ ] The opening uses the highest defensible stake, and the argument follows one causal chain.
+- [ ] Real resistance or uncertainty creates rise and fall, and the ending wisdom is earned.
 - [ ] Every necessary slide has one job, one claim-bearing title, and one purposeful artifact.
 - [ ] Decisions appear in causal order, and every transition answers “why next?”
 - [ ] Agency, evidence, outcomes, and confidence horizons are accurate.
+- [ ] Any missing story foundation is visible upfront and at its story location; none is invented.

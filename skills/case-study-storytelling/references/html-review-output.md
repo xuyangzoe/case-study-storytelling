@@ -54,6 +54,11 @@ Render these sections in order:
 Immediately after the story contract, add one compact link to the review decisions so
 the reader knows what feedback is needed without reaching the end.
 
+If the foundation check is incomplete, open this section with a prominent, concise
+`Provisional story — foundation incomplete` notice. Link the missing stake, causal
+chain, rise-and-fall source, or ending wisdom to its `GAP-##`. Explain that the plan is
+scaffolding for review, not a claim that the unsupported story is already true.
+
 ## Navigation and cross-references
 
 Give a long report a sticky numbered table of contents, active section state, and thin
@@ -148,6 +153,7 @@ in chat.
 
 - Remove repeated facts across the contract, findings, gaps, and slide fields.
 - Keep secondary detail in the checklist instead of repeating it below every slide.
+- Put unresolved foundation questions first in Review decisions.
 - Verify all anchor targets, collapsed-slide behavior, language switching, and overflow.
 - Privately check the storytelling definition of done, title-only arc, payoff recovery,
   slide budgets, and total runtime.

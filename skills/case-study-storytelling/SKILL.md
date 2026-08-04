@@ -14,6 +14,8 @@ producing the review file.
 
 - Use only supplied or explicitly cited sources; never import another case study's context.
 - Do not invent evidence, metrics, ownership, collaboration, or outcomes.
+- Never invent a stake, conflict, failure, turning point, consequence, or lesson to
+  complete an arc. A plausible story is not a truthful story.
 - Distinguish what shipped from what remained exploratory.
 - Preserve the creator's voice, but replace vague claims with concrete decisions.
 - Adapt emphasis to the supplied audience without turning the story into a competency checklist.
@@ -50,15 +52,31 @@ Enthusiasm is not priority; a written claim is not proof.
 When target context is supplied, select 2–4 audience signals the case can credibly
 prove. Do not force every case to cover every trait. Record the moment, action,
 constraint, and outcome that prove each signal. Keep this mapping private unless the
-audience mode is `interview`.
+audience mode is `interview`. If target context is absent, skip signal selection; never
+render candidate-fit material outside `interview` mode.
 
 ### 3. Diagnose the story and audience fit
 
 State the current and recommended arguments in one sentence each. Identify the primary
 proof, strongest beat, biggest risk, broken causal links, and the unresolved question
-that carries the middle. Require an honest failure, low point, rejection, reversal, or
-credible risk before the payoff; never manufacture one. Avoid an uninterrupted
-“amazing person did amazing things” accomplishment reel.
+that carries the middle.
+
+Run a story-foundation check before treating the map as complete. Confirm from supplied
+facts:
+
+- the highest defensible customer or business stake for the opening;
+- a causal chain from problem through changed decisions to outcome;
+- a real source of resistance, low point, constraint, uncertainty, tradeoff, rejected
+  assumption, or failure that makes the outcome non-inevitable;
+- one specific ending wisdom earned through the project.
+
+If any foundation is absent, still build a useful **provisional plan**. Begin the visible
+output—before diagnosis or slides—with `Provisional story — foundation incomplete` and
+name the missing foundations. Assign each one a stable `GAP-##`, place it where it
+belongs in the sequence, and turn it into a targeted review question. Do not write slide
+claims that depend on facts the user has not provided. Prefer a real failure or lesson
+when one exists, but never force literal failure; credible resistance or uncertainty
+can create the required rise and fall.
 
 In `interview` mode, integrate the 2–4 audience signals this case can credibly prove into
 the same diagnosis. Do not repeat the recommended argument as a separate candidate
@@ -137,8 +155,8 @@ Before rendering, run the title-only arc test as an action: extract the cover's 
 question and every `SLIDE-##` title in order, then write their one-line arc. Revise the
 titles or sequence until the opening question and title group form a clear arc rather
 than a result inventory. Map the opening question to the named `SLIDE-##` that explicitly
-answers it; if no slide does, repair the story. Keep the one-line arc and payoff mapping
-private.
+answers it; if no slide does, repair the story or mark the missing answer as a foundation
+gap. Keep the one-line arc and payoff mapping private.
 
 ## HTML output
 
