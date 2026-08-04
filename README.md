@@ -14,7 +14,7 @@ Codex skills directory.
 
 ## Use
 
-Ask Codex to use `$case-study-storytelling` with one or more of:
+Ask your coding agents to use the `case-study-storytelling` skill with one or more of:
 
 - a complete story draft;
 - a case-study webpage;
