@@ -8,7 +8,9 @@ description: Shape product-design case-study storytelling by turning a story dra
 Shape the argument before the visuals. Read
 [storytelling-principles.md](references/storytelling-principles.md), then follow this
 workflow. Read [html-review-output.md](references/html-review-output.md) only when
-producing the review file.
+producing the review file. If `references/local-profile.md` exists, read it as an
+installation-specific extension. It may add an audience lens or downstream handoff,
+but it must not weaken the evidence guardrails or replace the core workflow.
 
 ## Guardrails
 
