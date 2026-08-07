@@ -158,9 +158,14 @@ For an existing deck, map each planned slide to source slides and mark `keep`, `
 Before rendering, run the title-only arc test as an action: extract the cover's opening
 question and every `SLIDE-##` title in order, then write their one-line arc. Revise the
 titles or sequence until the opening question and title group form a clear arc rather
-than a result inventory. Map the opening question to the named `SLIDE-##` that explicitly
-answers it; if no slide does, repair the story or mark the missing answer as a foundation
-gap. Keep the one-line arc and payoff mapping private.
+than a result inventory. Run a surprise-leakage check on that sequence: if a setup or
+tension title states a later insight, reversal, or emotional payoff before the evidence
+earns it, rewrite the title around the immediate stake, problem, or question. Keep it
+concrete and truthful; do not replace premature disclosure with vague teaser copy. Let
+the reveal or payoff title state the deeper insight at the beat where it is earned. Map
+the opening question to the named `SLIDE-##` that explicitly answers it; if no slide
+does, repair the story or mark the missing answer as a foundation gap. Keep the one-line
+arc and payoff mapping private.
 
 ## HTML output
 

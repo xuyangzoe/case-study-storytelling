@@ -24,11 +24,15 @@ Treat these as defaults. The creator's latest explicit feedback wins.
    activity into the talk track, a progressive state, or a timeline. Recover room for a
    missing causal link by cutting detours, repeated proof, or redundant transitions—not
    by only adding slides. Move strong but distracting evidence to the appendix.
-5. **Give each slide and artifact one message.** Use a conclusion-led title and make the
-   point legible in about three seconds. Every image, screen, diagram, chart, or video
-   must land that message, prove it, or cause the next beat. In a live presentation,
-   show only what the audience must see and remember; use the talk for connection,
-   context, nuance, and explanation. Split a slide whose job needs “and.”
+5. **Give each slide and artifact one message.** Use a conclusion-led title, but state
+   only the conclusion the audience should hold at that beat—not a later insight or
+   emotional payoff. A setup or tension title names the immediate stake, problem, or
+   question; a reveal title states the deeper insight only after the evidence earns it.
+   Keep the point legible in about three seconds without resorting to vague teaser copy.
+   Every image, screen, diagram, chart, or video must land that message, prove it, or
+   cause the next beat. In a live presentation, show only what the audience must see and
+   remember; use the talk for connection, context, nuance, and explanation. Split a
+   slide whose job needs “and.”
 6. **Earn decisions through causal order.** Show why an initial belief was reasonable,
    what evidence or resistance exposed its limit, the learning and validation, then the
    changed decision, action, and outcome. Do not use hindsight to announce the answer
@@ -56,6 +60,9 @@ Use these as diagnostic shapes, not story templates:
   original stake, it is probably a detour.
 - **Five-second turn:** tension before → exact supported moment → what became different
   afterward. A small human moment may carry more story weight than a long process recap.
+- **Earned reveal:** immediate stake or tension → evidence or resistance → deeper
+  insight. Let the setup bridge from the previous beat and create a real question; do
+  not let its title answer that question before the audience experiences the turn.
 - **Earned wisdom:** consequential choice + cost or uncertainty + learning, expressed in
   the creator's own language. Specific and personal is better than grand and generic.
 
@@ -63,6 +70,10 @@ Use these as diagnostic shapes, not story templates:
 
 - Prefer concrete verbs: diagnosed, reframed, tested, replaced, prioritized, shipped.
 - Keep statement slides near 12 words; let evidence slides carry only scannable detail.
+- Run a surprise-leakage check on the title sequence. If an earlier title lets the
+  audience consume a later insight, reversal, or emotional payoff before its evidence,
+  rewrite it around the immediate stake or tension. Preserve meaning; do not create
+  suspense by withholding essential context or writing clickbait.
 - Name each artifact and how it informed a decision.
 - Use embedded depth only when it protects the main narrative path.
 - Never hide essential information behind interaction.
@@ -85,6 +96,7 @@ Use these as diagnostic shapes, not story templates:
 - [ ] The opening uses the highest defensible stake, and the argument follows one causal chain.
 - [ ] A real challenge makes success uncertain or forces change, and the ending wisdom is earned.
 - [ ] Every necessary slide has one job, one claim-bearing title, and one purposeful artifact.
+- [ ] Setup titles preserve later reveals without becoming vague, and payoff titles appear only after they are earned.
 - [ ] Decisions appear in causal order, and every transition answers “why next?”
 - [ ] Agency, evidence, outcomes, and confidence horizons are accurate.
 - [ ] Any missing story foundation is visible upfront and at its story location; none is invented.
