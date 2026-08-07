@@ -125,6 +125,16 @@ For an existing deck, show source slide numbers and revision actions. Put each v
 `COVER-00`, `SECTION-##`, `SLIDE-##`, or `GAP-##` ID on the same primary row as its
 beat-led title.
 
+Treat every collapsed slide header as a responsive component, especially when another
+column or narrow viewport reduces the story-plan width. Keep the beat-led title readable
+as a phrase; never let a rigid metadata grid squeeze it into per-word or per-letter
+wrapping. When the ID, title, action, and evidence chip no longer fit with the title on
+one or two normal lines, switch layout based on the slide card's own width: put the
+stable ID and chips in the first row, then give the title the full second row. Prefer a
+container query over a viewport breakpoint because the same card may appear at different
+widths within one page. Keep `word-break: normal` and avoid `overflow-wrap: anywhere` on
+the title.
+
 ## Bilingual and accessible output
 
 Include an `EN / 中文` switch unless the user requests one language. Embed both
@@ -157,7 +167,8 @@ in chat.
 - Remove repeated facts across the contract, findings, gaps, and slide fields.
 - Keep secondary detail in the checklist instead of repeating it below every slide.
 - Put unresolved foundation questions first in Review decisions.
-- Verify all anchor targets, collapsed-slide behavior, language switching, and overflow.
+- Verify all anchor targets, collapsed-slide behavior, language switching, overflow,
+  and collapsed-title readability at full and narrow card widths.
 - Privately check the storytelling definition of done, title-only arc, payoff recovery,
   slide budgets, and total runtime.
 - In chat, link the HTML and give only a short summary.
