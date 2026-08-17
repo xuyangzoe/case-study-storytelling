@@ -70,6 +70,13 @@ Give a long report a sticky numbered table of contents, active section state, an
 scroll-progress indicator. Make every reference to `SLIDE-##`, `GAP-##`, `ASSET-##`,
 `SECTION-##`, or another section a real anchor link.
 
+Place all persistent display controls—such as the language switch, `Expand all /
+Collapse all`, and any approved performance-preparation toggle—directly below the table
+of contents inside the same side-navigation region. Do not place these controls in a
+top header. When the navigation collapses on narrow screens, keep the controls
+immediately after the scrollable table of contents so their relationship and order stay
+consistent across story plans.
+
 Give each referenced surface a matching `id`. Use `GAP-##` for missing truth or evidence
 and `ASSET-##` for a settled story beat that still needs visual production. When an
 anchor targets a collapsed slide, open that slide so the reader lands on the relevant
