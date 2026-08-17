@@ -1,4 +1,4 @@
 interface:
   display_name: "Case Study Storytelling"
-  short_description: "Shape evidence-led case-study stories before visual design"
-  default_prompt: "Use $case-study-storytelling to turn this case study into a concise, causal story map with clear slide jobs, evidence, artifacts, pacing, and story gaps."
+  short_description: "Shape case stories and prepare interview follow-ups"
+  default_prompt: "Use $case-study-storytelling with /plan, /script, or /follow-up. Follow the suggested order: approve the story, stabilize the slides, prepare the script, then prepare follow-ups from both the story plan and script."

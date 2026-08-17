@@ -1,6 +1,6 @@
 ---
 name: case-study-storytelling
-description: Shape product-design case-study storytelling by turning a story draft, webpage, or existing deck into an evidence-led argument, causal narrative arc, and sequential slide-by-slide story map with artifacts and story gaps. Use before visual design or implementation for a live talk, interview, portfolio review, or self-guided deck.
+description: Shape product-design case-study storytelling by turning a story draft, webpage, or existing deck into an evidence-led argument, causal narrative arc, and sequential slide-by-slide story map with artifacts and story gaps. After the storyline is explicitly approved, use the same skill for slide-aligned talking points, emotional tension, performance preparation, and evidence-grounded interviewer follow-up questions with structured answer scaffolds. Use before visual design or implementation for a live talk, interview, portfolio review, or self-guided deck.
 ---
 
 # Case Study Storytelling
@@ -9,8 +9,51 @@ Shape the argument before the visuals. Read
 [storytelling-principles.md](references/storytelling-principles.md), then follow this
 workflow. Read [html-review-output.md](references/html-review-output.md) only when
 producing the review file. If `references/local-profile.md` exists, read it as an
-installation-specific extension. It may add an audience lens or downstream handoff,
-but it must not weaken the evidence guardrails or replace the core workflow.
+installation-specific extension. It may add an audience lens, workflow preference, or
+downstream handoff, but it must not weaken the evidence guardrails or replace the core
+workflow.
+
+## Mode router
+
+When the skill is explicitly invoked with a mode, route directly to that workflow:
+
+- `/plan` — run or revise story architecture through the approval gate. This is the
+  default when no mode is supplied.
+- `/script` — add slide-aligned spoken structure and emotional beats to an approved or
+  explicitly accepted clear story plan. Read [script-prep.md](references/script-prep.md)
+  completely before acting. Produce structure, not a verbatim script, unless explicitly
+  requested.
+- `/follow-up` — add evidence-grounded interviewer questions and answer architecture to
+  an approved or explicitly accepted clear story plan and its completed performance
+  script or talking points. Read both inputs, then read
+  [interview-follow-up-prep.md](references/interview-follow-up-prep.md) completely before
+  acting. If no script or talking-point layer exists, ask the user to run `/script` or
+  supply an existing script before preparing follow-ups.
+- `/revise` — incorporate the user's comments into the current story-planning artifact
+  using the active mode's rules. Preserve unaffected content and do not silently advance
+  to another mode.
+
+Treat the slash-prefixed word as a skill-local mode, not as a Codex system command. A
+mode selects a workflow; it does not waive its evidence requirements or approval gate.
+
+## Three-stage contract
+
+Use three sequential stages:
+
+1. **Story architecture** is the default and mandatory first pass. Establish the
+   argument, evidence, causal arc, lows, turns, ending wisdom, and slide sequence.
+2. **Script preparation** is an additive second stage. It creates slide-aligned talking
+   points and emotional beats only after the storyline is approved and the slide
+   sequence is relatively stable.
+3. **Follow-up preparation** is the final stage. It reads the approved story plan and
+   the completed script together, then prepares interviewer questions and answer
+   structures from both visible and spoken claims.
+
+Never generate a later stage during an earlier one. If the user asks for all stages at
+once, complete the story architecture, surface the review decisions, and wait for
+approval before starting script preparation. Complete or receive the script before
+starting follow-up preparation. Do not let sentence-level delivery work hide an
+unresolved causal or evidentiary problem.
 
 ## Guardrails
 
@@ -66,7 +109,8 @@ that carries the middle.
 Run a story-foundation check before treating the map as complete. Confirm from supplied
 facts:
 
-- the highest defensible customer or business stake for the opening;
+- the highest defensible customer or business stake for the first narrative beat after
+  the lightweight cover;
 - a causal chain from problem through changed decisions to outcome;
 - a real challenge that made success genuinely hard, threatened the outcome, or forced
   a meaningful change; routine friction does not count;
@@ -97,9 +141,11 @@ Build a decision-and-evidence arc, not a process diary. Every slide needs:
 - at most one audience signal, only when the slide genuinely proves it;
 - one talk-track focus and a causal handoff.
 
-Start with a standalone `COVER-00` before `SLIDE-01`. Give it the project name, a
-one-sentence premise, minimal role/context, and one hero artifact; budget 15–30 seconds.
-Do not make the first narrative slide do double duty as the cover.
+Start with a standalone `COVER-00` before `SLIDE-01`. Apply the lightweight-cover rule
+from `storytelling-principles.md`: project name, one-sentence premise, minimal
+role/context, and one hero artifact; budget 15–30 seconds. Let `SLIDE-01` establish the
+highest defensible stake. Do not make the first narrative slide do double duty as the
+cover.
 
 Budget content slides at 60–120 seconds and covers, transitions, or payoffs at 20–45
 seconds. Split or cut when a slide exceeds two minutes, has two jobs, gives two
@@ -155,17 +201,47 @@ Without a source fact, do not infer. Mark the claim `missing` and create a `GAP-
 For an existing deck, map each planned slide to source slides and mark `keep`, `revise`,
 `merge`, `split`, `move`, `replace`, or `new`.
 
-Before rendering, run the title-only arc test as an action: extract the cover's opening
-question and every `SLIDE-##` title in order, then write their one-line arc. Revise the
-titles or sequence until the opening question and title group form a clear arc rather
-than a result inventory. Run a surprise-leakage check on that sequence: if a setup or
-tension title states a later insight, reversal, or emotional payoff before the evidence
-earns it, rewrite the title around the immediate stake, problem, or question. Keep it
+Before rendering, run the title-only arc test as an action: extract the cover's premise
+or opening question and every `SLIDE-##` title in order, then write their one-line arc.
+Revise the titles or sequence until the opening question and title group form a clear
+arc rather than a result inventory. Run a surprise-leakage check on that sequence: if a
+setup or tension title states a later insight, reversal, or emotional payoff before the
+evidence earns it, rewrite the title around the immediate stake, problem, or question. Keep it
 concrete and truthful; do not replace premature disclosure with vague teaser copy. Let
-the reveal or payoff title state the deeper insight at the beat where it is earned. Map
-the opening question to the named `SLIDE-##` that explicitly answers it; if no slide
-does, repair the story or mark the missing answer as a foundation gap. Keep the one-line
-arc and payoff mapping private.
+the reveal or payoff title state the deeper insight at the beat where it is earned. If
+the cover asks a question, map it to the named `SLIDE-##` that explicitly answers it;
+if no slide does, repair the story or mark the missing answer as a foundation gap. Keep
+the one-line arc and payoff mapping private.
+
+### 5. Gate script and follow-up preparation
+
+Stop after the story map unless the user explicitly approves moving into performance
+preparation. Treat the storyline as ready only when:
+
+- the one-sentence argument is stable;
+- the elephant and highest defensible stake are supported;
+- the causal chain, genuine challenge or low, turning point, and outcome are clear;
+- the ending wisdom is earned;
+- the slide order is settled enough that no known gap would materially restructure it;
+- the user has reviewed the story plan and explicitly approved the second pass.
+
+Track the working state privately as `draft`, `clear`, or `approved`. Only `approved`
+activates performance preparation by default. A user may explicitly accept a `clear`
+storyline and ask to proceed; treat that as an intentional override, not automatic
+approval.
+
+When the gate passes, read [script-prep.md](references/script-prep.md) completely and
+add performance preparation to the approved story plan. Preserve the original story
+map; do not replace slide jobs, evidence, artifacts, gaps, or handoffs with delivery
+notes. Do not write a verbatim script unless the user explicitly asks for one.
+
+When the script or talking-point layer is complete, read it together with the approved
+story plan before starting interviewer follow-up preparation. Then read
+[interview-follow-up-prep.md](references/interview-follow-up-prep.md) and append its
+question workspace to the review artifact. If the user supplies an existing script,
+use it; it does not need to have been generated by this skill. If no script exists,
+stop and ask the user to run `/script` or provide one. Treat the workspace as answer
+architecture, not a memorized script.
 
 ## HTML output
 

@@ -10,9 +10,10 @@ not story reasoning.
 3. [Navigation and cross-references](#navigation-and-cross-references)
 4. [Editorial hierarchy](#editorial-hierarchy)
 5. [Evidence and findings](#evidence-and-findings)
-6. [Bilingual and accessible output](#bilingual-and-accessible-output)
-7. [Private versus rendered](#private-versus-rendered)
-8. [Final checks](#final-checks)
+6. [Performance preparation](#performance-preparation)
+7. [Bilingual and accessible output](#bilingual-and-accessible-output)
+8. [Private versus rendered](#private-versus-rendered)
+9. [Final checks](#final-checks)
 
 ## Runtime and design system
 
@@ -50,6 +51,10 @@ Render these sections in order:
 4. **Evidence checklist** — at most eight high-leverage items linked to their
    `SLIDE-##`, `GAP-##`, or `ASSET-##`.
 5. **Review decisions** — at most three one-sentence questions.
+6. **Interviewer follow-up workspace** — include only in `interview` mode after the
+   storyline is approved or explicitly accepted as clear, the script or talking-point
+   layer is complete, and the user asks to prepare for questions. Follow
+   [interview-follow-up-prep.md](interview-follow-up-prep.md).
 
 Immediately after the story contract, add one compact link to the review decisions so
 the reader knows what feedback is needed without reaching the end.
@@ -97,6 +102,13 @@ Default to focus view: keep every title visible, collapse slide details consiste
 and expose only actionable gaps until the reader opens a slide or selects full detail.
 Treat the collapsed rows as an index of the story.
 
+When slide rows use accordions, add one compact global `Expand all / Collapse all`
+control beside the other display controls. Default to the collapsed focus view. The
+control must update every slide accordion, switch its visible label and `aria-pressed`
+state, and stay synchronized when the reader manually opens or closes individual
+slides. Translate the label in bilingual output. Omit this control when the story map
+does not use accordions.
+
 Keep each slide card near 60–110 words and each gap near 40–70 words. Use one repeated
 body grid; make gap callouts full width. Combine talk track and transition when their
 separation adds little. Render format and time only when explicitly requested.
@@ -135,6 +147,27 @@ container query over a viewport breakpoint because the same card may appear at d
 widths within one page. Keep `word-break: normal` and avoid `overflow-wrap: anywhere` on
 the title.
 
+## Performance preparation
+
+Do not render performance preparation in the first-pass review file. Add it only after
+the storyline passes the approval gate and the user asks to begin the second pass.
+
+When active, preserve the complete story-plan column and add an optional aligned
+sidecar to its right. Each slide card and performance-prep card must share a row so the
+presenter can scan the story vertically. Use one global toggle, default it to off, and
+keep the original slide details intact rather than placing performance notes inside the
+accordion.
+
+The sidecar should show only the slide's audience emotion and talking points. Use
+emotion words, not editorial functions or rhetorical labels. Highlight a real causal
+or contrast connector when it helps the beats play against one another. Do not render
+a generic delivery line; include a pause, click, reveal, or pacing cue only when the
+stage action is essential to the slide's meaning.
+
+On narrow screens, stack each sidecar directly below its matching slide. Prevent blank
+slide-card height from stretching to match a longer sidecar. Keep the toggle, sidecars,
+and all performance-prep content absent when the second pass has not been activated.
+
 ## Bilingual and accessible output
 
 Include an `EN / 中文` switch unless the user requests one language. Embed both
@@ -167,8 +200,15 @@ in chat.
 - Remove repeated facts across the contract, findings, gaps, and slide fields.
 - Keep secondary detail in the checklist instead of repeating it below every slide.
 - Put unresolved foundation questions first in Review decisions.
-- Verify all anchor targets, collapsed-slide behavior, language switching, overflow,
-  and collapsed-title readability at full and narrow card widths.
+- Verify all anchor targets, collapsed-slide behavior, the synchronized `Expand all /
+  Collapse all` control when accordions are used, language switching, and overflow.
+- If performance preparation is active, verify one-to-one sidecar alignment, toggle
+  behavior, emotion labels, causal emphasis, narrow-screen stacking, and collapsed-title
+  readability with the sidecar both off and on.
+- If interviewer follow-up preparation is active, verify that every question is linked
+  to a visible story claim, spoken script claim, gap, or mismatch between them; every
+  answer is a numbered structure rather than a default script; and each card has one
+  claim boundary and one next fact to sharpen.
 - Privately check the storytelling definition of done, title-only arc, payoff recovery,
   slide budgets, and total runtime.
 - In chat, link the HTML and give only a short summary.

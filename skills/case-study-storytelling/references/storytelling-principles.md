@@ -5,8 +5,11 @@ Treat these as defaults. The creator's latest explicit feedback wins.
 ## Core rules
 
 1. **Make an argument around one elephant.** The elephant is the biggest real customer
-   or business consequence—the reason the project matters. Open with it and keep it
-   stable. Let the elephant reveal a deeper form: an early product
+   or business consequence—the reason the project matters. Keep the cover light: name
+   the project, its one-line premise, and the creator's role without overselling its
+   significance or previewing the payoff. Establish the elephant in the first narrative
+   beat after the cover and keep it stable. Let the elephant reveal a deeper form: an
+   early product
    answer may expose the deeper product, organizational, or delivery blocker that still
    prevents the original stake from being resolved. Change the active bottleneck, not
    the subject. Reject any new tension that does not deepen the same causal chain.
@@ -33,14 +36,21 @@ Treat these as defaults. The creator's latest explicit feedback wins.
    cause the next beat. In a live presentation, show only what the audience must see and
    remember; use the talk for connection, context, nuance, and explanation. Split a
    slide whose job needs “and.”
-6. **Earn decisions through causal order.** Show why an initial belief was reasonable,
-   what evidence or resistance exposed its limit, the learning and validation, then the
-   changed decision, action, and outcome. Do not use hindsight to announce the answer
-   before the evidence that earned it. Every section handoff must answer “why next?”
+6. **Earn every meaningful change through causal order.** Show the previous belief or
+   state, why it was reasonable, what evidence or resistance exposed its limit, the
+   changed decision, its consequential product or organizational impact, and the
+   observed outcome or remaining uncertainty. This applies to assumptions, personas,
+   interactions, scope, priorities, technical compromises, and delivery models. Give a
+   change story time only when its consequence materially alters the causal chain. Do
+   not use hindsight to announce the answer before the evidence that earned it. Every
+   section handoff must answer “why next?”
 7. **Show agency accurately.** Use “I” for owned judgment and name collaborators'
-   material contributions. Show persistence as a costly, evidence-backed decision—not
-   a personality claim. If an external event opens the strategic window, show the
-   preparation that made it actionable. Avoid both vague “we” and lone-hero framing.
+   material contributions. Keep the cover's role context minimal; place extended
+   credibility proof after the mandate makes the audience ask why this person was
+   positioned to lead. Prove expertise through the distinctive judgment or capability
+   it enabled. Show persistence as a costly, evidence-backed decision—not a personality
+   claim. If an external event opens the strategic window, show the preparation that
+   made it actionable. Avoid both vague “we” and lone-hero framing.
 8. **Name evidence honestly.** Every inference must name the source facts it is based
    on; without a source fact, mark a gap. Distinguish problem, system, interaction-model, and
    feature-priority validation; separate learning from sponsorship, adoption, shipping,
@@ -70,6 +80,10 @@ Use these as diagnostic shapes, not story templates:
 
 - Prefer concrete verbs: diagnosed, reframed, tested, replaced, prioritized, shipped.
 - Keep statement slides near 12 words; let evidence slides carry only scannable detail.
+- Preserve the knowledge state. At every slide or reveal, state only what the audience
+  can know at that moment.
+- Earn principles through evidence. Show them through decisions before naming them;
+  use standalone principle slides only for orientation or synthesis.
 - Run a surprise-leakage check on the title sequence. If an earlier title lets the
   audience consume a later insight, reversal, or emotional payoff before its evidence,
   rewrite it around the immediate stake or tension. Preserve meaning; do not create
@@ -93,10 +107,12 @@ Use these as diagnostic shapes, not story templates:
 
 ## Definition of done
 
-- [ ] The opening uses the highest defensible stake, and the argument follows one causal chain.
+- [ ] The cover orients lightly; the first narrative beat establishes the highest
+      defensible stake without leaking later turns.
 - [ ] A real challenge makes success uncertain or forces change, and the ending wisdom is earned.
 - [ ] Every necessary slide has one job, one claim-bearing title, and one purposeful artifact.
 - [ ] Setup titles preserve later reveals without becoming vague, and payoff titles appear only after they are earned.
-- [ ] Decisions appear in causal order, and every transition answers “why next?”
+- [ ] Every meaningful change has a supported reason and consequential impact;
+      decisions appear in causal order, and every transition answers “why next?”
 - [ ] Agency, evidence, outcomes, and confidence horizons are accurate.
 - [ ] Any missing story foundation is visible upfront and at its story location; none is invented.

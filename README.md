@@ -1,11 +1,43 @@
 # Case Study Storytelling
 
-A Codex skill for turning a product-design story draft, case-study webpage, or existing
-deck into an evidence-led narrative diagnosis and a sequential slide-by-slide story map.
+**Plan it. Tell it. Defend it.**
 
-It focuses on story structure before visual design: argument, stakes, causality,
-artifacts, evidence, pacing, iteration, and story gaps. The output is a standalone HTML
-review file with an English / Chinese switch by default.
+A skill with three user-facing modes for taking a product-design case study from raw
+material to interview readiness.
+
+## Choose a mode
+
+| Mode | Use it when | What it produces |
+|---|---|---|
+| `/plan` | You have a story draft, case-study webpage, or existing deck. Start here for a new story. | An evidence-led argument, narrative diagnosis, and slide-by-slide story map with artifacts and gaps. |
+| `/script` | The story plan is approved and the slide sequence is close to final. | Flexible slide-aligned talking points, emotional movement, causal emphasis, and natural transitions—not a verbatim script unless requested. |
+| `/follow-up` | The story, slides, and script are ready and you want to prepare for interviewer questions. | Questions caused by the story's visible and spoken claims, plus structured answers, drill-downs, claim boundaries, and missing facts. |
+
+## Suggested workflow
+
+Run the modes in this order:
+
+```text
+/plan → refine and approve the story → finalize the slides → /script → /follow-up
+```
+
+1. **Start with `/plan`.** Build and revise the argument, causal arc, evidence, gaps,
+   artifacts, and slide sequence. Do not move on while a known gap could still change
+   the core story.
+2. **Bring the slides close to final.** Stabilize the slide order, titles, primary
+   artifacts, and important reveals or interactions. Visual polish may continue, but
+   the presentation's meaning and sequence should no longer be moving substantially.
+3. **Run `/script`.** Prepare the delivery against the real slides so every talking
+   point, emotional turn, and transition has a stable place.
+4. **Run `/follow-up`.** Prepare interviewer questions after the script so the skill can
+   pressure-test both what appears on screen and what the presenter plans to say.
+
+During any stage, the agent may revise the current artifact in response to feedback
+without silently advancing to the next mode.
+
+The skill keeps story logic, delivery preparation, and interview defense connected to
+one truthful source. It does not invent evidence, stakes, failures, emotions, metrics,
+ownership, or impact.
 
 ## Install
 
@@ -14,15 +46,25 @@ Codex skills directory.
 
 ## Use
 
-Ask your coding agents to use the `case-study-storytelling` skill with one or more of:
+Ask your coding agents to use `case-study-storytelling` with the mode you need. For
+example:
+
+```text
+Use $case-study-storytelling /plan on this case-study webpage.
+Use $case-study-storytelling /script on the approved story plan.
+Use $case-study-storytelling /follow-up on the final story and script to prepare for interviewer questions.
+```
+
+For `/plan`, provide one or more of:
 
 - a complete story draft;
 - a case-study webpage;
 - an existing presentation deck;
 - optional audience context such as a job description or company notes.
 
-The skill does not design or implement the final deck. It produces the story plan that
-a separate visual or presentation workflow can use.
+The planning output is a standalone HTML review file with an English / Chinese switch
+by default. The skill does not design or implement the final deck; a separate visual or
+presentation workflow can use the approved story plan.
 
 ## Optional local profile
 
