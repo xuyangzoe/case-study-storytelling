@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kicks — Story Plan / 故事架构</title>
+<style>
+  :root{
+    --bg:#faf9f7;
+    --surface:#ffffff;
+    --text:#1c1a17;
+    --text-muted:#5a564e;
+    --text-faint:#8a8579;
+    --border:#e4e0d8;
+    --border-strong:#cfc9bc;
+    --accent:#8a5a2b;
+    --accent-soft:#f1e6d8;
+    --supported:#3f7d4a;
+    --supported-bg:#eef6ee;
+    --supported-border:#bfe0c4;
+    --stated:#a06a00;
+    --stated-bg:#fbf1de;
+    --stated-border:#eecf94;
+    --inferred:#2f5fa6;
+    --inferred-bg:#eaf1fb;
+    --inferred-border:#bcd4f0;
+    --missing:#a3352f;
+    --missing-bg:#fbebe9;
+    --missing-border:#eebcb8;
+    --serif: Georgia, 'Songti SC', 'Noto Serif SC', 'PingFang SC', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --mono: 'SFMono-Regular', Consolas, monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--sans);}
+  body{line-height:1.6;font-size:16px;}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.3;}
+  a{color:var(--accent);}
+  a:focus-visible, button:focus-visible, summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+  [lang="zh"]{display:none;}
+  html[data-lang="zh"] [lang="en"]{display:none;}
+  html[data-lang="zh"] [lang="zh"]{display:inline;}
+  html[data-lang="zh"] .block-zh{display:block;}
+  html[data-lang="en"] .block-en{display:block;}
+  html[data-lang="zh"] .block-en{display:none;}
+  html[data-lang="en"] .block-zh{display:none;}
+
+  .layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:0;max-width:1280px;margin:0 auto;min-height:100vh;}
+  @container (max-width: 900px){ }
+  .sidebar{
+    position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;
+    padding:28px 20px;border-right:1px solid var(--border);
+    background:var(--bg);
+  }
+  .sidebar h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-faint);margin:0 0 12px;font-family:var(--sans);font-weight:600;}
+  .toc{list-style:none;margin:0 0 20px;padding:0;font-size:14px;}
+  .toc li{margin:2px 0;}
+  .toc a{display:block;padding:6px 8px;border-radius:6px;color:var(--text-muted);text-decoration:none;}
+  .toc a:hover{background:var(--accent-soft);color:var(--text);}
+  .toc a.active{background:var(--accent-soft);color:var(--accent);font-weight:600;}
+  .toc .sub{padding-left:16px;font-size:13px;}
+  .progress-track{height:3px;background:var(--border);border-radius:2px;margin-bottom:18px;overflow:hidden;}
+  .progress-fill{height:100%;width:0%;background:var(--accent);}
+  .controls{display:flex;flex-direction:column;gap:8px;margin-top:8px;padding-top:16px;border-top:1px solid var(--border);}
+  .ctrl-btn{
+    font-family:var(--sans);font-size:13px;padding:7px 10px;border-radius:6px;border:1px solid var(--border-strong);
+    background:var(--surface);color:var(--text);cursor:pointer;text-align:left;
+  }
+  .ctrl-btn:hover{background:var(--accent-soft);}
+  .lang-switch{display:flex;border:1px solid var(--border-strong);border-radius:6px;overflow:hidden;width:fit-content;}
+  .lang-switch button{font-family:var(--sans);font-size:13px;padding:6px 12px;border:none;background:var(--surface);color:var(--text-muted);cursor:pointer;}
+  .lang-switch button.on{background:var(--accent);color:#fff;}
+
+  .main{padding:40px 48px 100px;min-width:0;}
+  section{margin-bottom:56px;}
+  .kicker{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);margin-bottom:6px;}
+  h1.title{font-size:30px;margin:0 0 6px;}
+  .subtitle{color:var(--text-muted);font-size:15px;margin-bottom:0;}
+
+  .assumptions{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:18px;}
+  .assumption-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+  .assumption-card .label{font-size:12px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+  .assumption-card .value{font-size:14px;color:var(--text);}
+
+  .contract{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 26px;margin-top:18px;}
+  .contract .q{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-faint);margin-bottom:6px;}
+  .contract .question-text{font-size:17px;margin-bottom:18px;color:var(--text);}
+  .contract .arrow{color:var(--text-faint);margin:0 8px;}
+  .contract .argument-text{font-size:17px;color:var(--text);font-weight:500;}
+  .review-link{font-size:14px;margin-top:14px;}
+
+  .findings{list-style:none;margin:18px 0 0;padding:0;}
+  .findings li{padding:12px 0;border-top:1px solid var(--border);font-size:15px;}
+  .findings li:first-child{border-top:none;}
+
+  h2.section-title{font-size:22px;margin:0 0 4px;}
+  .section-sub{color:var(--text-muted);font-size:14px;margin-bottom:20px;}
+
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--text-muted);margin-bottom:18px;}
+  .legend .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle;}
+
+  .chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:3px 9px;border-radius:20px;border:1px solid; white-space:nowrap;}
+  .chip.supported{color:var(--supported);background:var(--supported-bg);border-color:var(--supported-border);}
+  .chip.stated-only{color:var(--stated);background:var(--stated-bg);border-color:var(--stated-border);}
+  .chip.inferred{color:var(--inferred);background:var(--inferred-bg);border-color:var(--inferred-border);}
+  .chip.missing{color:var(--missing);background:var(--missing-bg);border-color:var(--missing-border);}
+
+  .cover-card{background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;padding:22px 24px;margin-bottom:18px;}
+  .cover-card .id-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-faint);margin-bottom:8px;font-family:var(--mono);}
+  .cover-card h3{font-size:19px;margin:0 0 8px;}
+  .cover-card p{margin:0;color:var(--text-muted);font-size:14px;}
+  .cover-meta{margin-top:10px;font-size:13px;color:var(--text-faint);}
+
+  .slide-list{display:flex;flex-direction:column;gap:10px;}
+  details.slide{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0;container-type:inline-size;}
+  details.slide[open]{border-color:var(--border-strong);}
+  details.slide > summary{
+    list-style:none;cursor:pointer;padding:14px 18px;display:flex;flex-direction:column;gap:6px;
+  }
+  details.slide > summary::-webkit-details-marker{display:none;}
+  .summary-row1{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;color:var(--text-faint);}
+  .summary-row1 .id{font-weight:600;color:var(--accent);}
+  .summary-row2{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .slide-title{font-size:16px;font-weight:600;color:var(--text);word-break:normal;}
+  @container (max-width: 480px){
+    .summary-row2{flex-direction:column;align-items:flex-start;gap:6px;}
+  }
+  .slide-body{padding:0 18px 18px;font-size:14.5px;color:var(--text-muted);border-top:1px solid var(--border);margin-top:2px;padding-top:14px;}
+  .slide-body .field{margin-bottom:10px;}
+  .slide-body .field .flabel{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);margin-bottom:3px;}
+  .slide-body .field .fval{font-size:14.5px;color:var(--text);}
+  .gap-inline{margin-top:10px;background:var(--stated-bg);border:1px solid var(--stated-border);border-radius:8px;padding:10px 12px;font-size:13.5px;color:#5a4a1e;}
+  .gap-inline .gid{font-family:var(--mono);font-weight:700;margin-right:6px;color:var(--stated);}
+
+  .section-divider{margin:18px 0;padding:10px 14px;background:var(--accent-soft);border-radius:8px;font-size:13.5px;color:#5a4530;}
+
+  table.checklist{width:100%;border-collapse:collapse;font-size:14px;margin-top:14px;}
+  table.checklist th, table.checklist td{text-align:left;padding:10px 12px;border-top:1px solid var(--border);vertical-align:top;}
+  table.checklist th{font-size:12px;text-transform:uppercase;color:var(--text-faint);letter-spacing:.04em;}
+  table.checklist tr:first-child td{border-top:none;}
+  .wrap-table{overflow-x:auto;}
+  .id-link{font-family:var(--mono);font-size:12.5px;color:var(--accent);text-decoration:none;font-weight:600;}
+
+  .review-q{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;font-size:14.5px;}
+  .review-q .rid{font-family:var(--mono);color:var(--accent);font-weight:700;margin-right:8px;}
+
+  .howto{font-size:13.5px;color:var(--text-faint);border-top:1px solid var(--border);padding-top:16px;margin-top:40px;}
+
+  @media (max-width: 860px){
+    .layout{grid-template-columns:1fr;}
+    .sidebar{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--border);}
+    .main{padding:28px 20px 80px;}
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <h2><span lang="en">Contents</span><span lang="zh">目录</span></h2>
+    <ul class="toc">
+      <li><a href="#assumptions"><span lang="en">Working assumptions</span><span lang="zh">工作假设</span></a></li>
+      <li><a href="#contract"><span lang="en">Story contract</span><span lang="zh">故事契约</span></a></li>
+      <li><a href="#findings"><span lang="en">Findings</span><span lang="zh">核心发现</span></a></li>
+      <li><a href="#storymap"><span lang="en">Story map</span><span lang="zh">故事地图</span></a>
+        <ul class="toc sub">
+          <li><a href="#COVER-00">COVER-00</a></li>
+          <li><a href="#SLIDE-01">SLIDE-01</a></li>
+          <li><a href="#SLIDE-02">SLIDE-02</a></li>
+          <li><a href="#SLIDE-03">SLIDE-03</a></li>
+          <li><a href="#SLIDE-04">SLIDE-04</a></li>
+          <li><a href="#SLIDE-05">SLIDE-05</a></li>
+          <li><a href="#SLIDE-06">SLIDE-06</a></li>
+          <li><a href="#SLIDE-07">SLIDE-07</a></li>
+          <li><a href="#SLIDE-08">SLIDE-08</a></li>
+          <li><a href="#SLIDE-09">SLIDE-09</a></li>
+          <li><a href="#SLIDE-10">SLIDE-10</a></li>
+        </ul>
+      </li>
+      <li><a href="#checklist"><span lang="en">Evidence checklist</span><span lang="zh">证据清单</span></a></li>
+      <li><a href="#decisions"><span lang="en">Review decisions</span><span lang="zh">待确认问题</span></a></li>
+    </ul>
+    <div class="controls">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button id="btnEn" class="on" onclick="setLang('en')">EN</button>
+        <button id="btnZh" onclick="setLang('zh')">中文</button>
+      </div>
+      <button class="ctrl-btn" id="expandToggle" onclick="toggleExpandAll()" aria-pressed="false">
+        <span lang="en">Expand all</span><span lang="zh">展开全部</span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <header style="margin-bottom:40px;">
+      <div class="kicker"><span lang="en">Case study story plan</span><span lang="zh">案例故事架构</span></div>
+      <h1 class="title">Kicks — KICK <span lang="en">Cheer &amp; Gifting System</span><span lang="zh">打赏与送礼系统</span></h1>
+      <p class="subtitle">
+        <span lang="en">Story architecture pass · portfolio audience · sourced from Notion project notes</span>
+        <span lang="zh">故事架构初稿 · 作品集展示场景 · 素材来源于 Notion 项目笔记</span>
+      </p>
+    </header>
+
+    <section id="assumptions">
+      <h2 class="section-title"><span lang="en">Working assumptions</span><span lang="zh">工作假设</span></h2>
+      <p class="section-sub">
+        <span lang="en">Stated up front so you can correct anything before the map goes further.</span>
+        <span lang="zh">提前列出,方便你在故事进一步展开之前先纠正任何不准确之处。</span>
+      </p>
+      <div class="assumptions">
+        <div class="assumption-card">
+          <div class="label"><span lang="en">Source</span><span lang="zh">素材来源</span></div>
+          <div class="value"><span lang="en">Notion "KICK" workspace pages: design specs (Cheering with Kicks, Kicks, KICKs pinned gift msg, New pre) + first-person interview-prep retrospective</span><span lang="zh">Notion "KICK" 工作区页面:设计说明文档(Cheering with Kicks、Kicks、KICKs pinned gift msg、New pre)+ 第一人称面试准备复盘文字</span></div>
+        </div>
+        <div class="assumption-card">
+          <div class="label"><span lang="en">Audience mode</span><span lang="zh">受众模式</span></div>
+          <div class="value"><span lang="en">Portfolio (self-guided) — no candidate-fit signals rendered</span><span lang="zh">作品集(自主阅读)——不呈现岗位匹配相关内容</span></div>
+        </div>
+        <div class="assumption-card">
+          <div class="label"><span lang="en">Format &amp; duration</span><span lang="zh">形式与时长</span></div>
+          <div class="value"><span lang="en">Assumed: self-paced web case study, no live-talk timing constraint (assumption — confirm if this is for a live walkthrough instead)</span><span lang="zh">假设为:自主阅读的网页案例研究,不受现场演讲时长限制(此为假设,如实际是现场讲解请告知)</span></div>
+        </div>
+        <div class="assumption-card">
+          <div class="label"><span lang="en">Slide count</span><span lang="zh">页数</span></div>
+          <div class="value"><span lang="en">Cover + 10 slides — sized to the evidence depth currently available (assumption)</span><span lang="zh">封面 + 10 页——根据当前已掌握的证据深度估算(此为假设)</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contract">
+      <h2 class="section-title"><span lang="en">Story contract</span><span lang="zh">故事契约</span></h2>
+      <div class="contract">
+        <div class="q"><span lang="en">Central question</span><span lang="zh">核心问题</span></div>
+        <div class="question-text">
+          <span lang="en">How do you turn a feature everyone privately agrees is "just a Twitch clone" into something a live-streaming platform can stake its monetization strategy on?</span>
+          <span lang="zh">当团队私下都承认某个功能"不过是 Twitch 的翻版"时,要如何把它变成一款直播平台愿意押注其变现战略的产品?</span>
+        </div>
+        <div class="q"><span lang="en">Recommended argument</span><span lang="zh">推荐的故事主张</span></div>
+        <div class="argument-text">
+          <span lang="en">By reframing the design brief itself — from "how much do they spend" to "do they get seen" — a stalled, five-times-rejected virtual currency became a gifting system that shipped differentiated, launched to real volume, and revealed that the platform's actual engagement currency was visibility, not value.</span>
+          <span lang="zh">通过重新定义设计命题本身——从"他们花了多少钱"转变为"他们有没有被看见"——一个卡壳、被五次否决的虚拟货币功能,最终变成了一套真正差异化、成功上线并产生真实交易量的送礼系统,也揭示出这个平台真正的"参与货币"其实是被看见,而不是花费的金额。</span>
+        </div>
+        <p class="review-link">
+          <span lang="en">↓ Jump to <a href="#decisions">Review decisions</a> for the 3 things worth confirming before this goes further.</span>
+          <span lang="zh">↓ 跳转到 <a href="#decisions">待确认问题</a>,先确认 3 件事再继续推进。</span>
+        </p>
+      </div>
+    </section>
+
+    <section id="findings">
+      <h2 class="section-title"><span lang="en">Findings</span><span lang="zh">核心发现</span></h2>
+      <ul class="findings">
+        <li>
+          <span lang="en">The genuine low (five rejected pitches) and the workshop reframe are strong and well-supported by your own account — they should be the narrative spine, not the feature mechanics.</span>
+          <span lang="zh">真实的低谷时刻(五版提案被拒)和工作坊里的重新定义,是你自己亲历且有力的素材——它们应该是故事的主干,而不是功能机制本身。</span>
+        </li>
+        <li>
+          <span lang="en">The strongest evidence you currently have is written product-spec documentation, not screenshots — nearly every slide still needs a visual artifact before this is presentable.</span>
+          <span lang="zh">目前最扎实的证据是文字形式的产品设计文档,而不是截图——几乎每一页在可展示之前都还需要补充视觉素材。</span>
+        </li>
+        <li>
+          <span lang="en">The week-one data reveal (cheap-tier clustering) is your best proof beat — it currently reads as a footnote stat and deserves its own slide, not a mention.</span>
+          <span lang="zh">上线第一周的数据反转(低档位聚集现象)是你最有力的证据环节——目前它只是一句带过的数字,值得单独成为一页,而不只是顺带一提。</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="storymap">
+      <h2 class="section-title"><span lang="en">Story map</span><span lang="zh">故事地图</span></h2>
+      <p class="section-sub"><span lang="en">Cover, then ten slides in causal order. Evidence status is marked in the top-right of each row.</span><span lang="zh">先是封面,随后十页按因果顺序展开。每一行右上角标注了证据状态。</span></p>
+      <div class="legend">
+        <span><span class="dot" style="background:var(--supported)"></span><span lang="en">supported</span><span lang="zh">有据可查</span></span>
+        <span><span class="dot" style="background:var(--stated)"></span><span lang="en">stated-only</span><span lang="zh">仅口述未验证</span></span>
+        <span><span class="dot" style="background:var(--inferred)"></span><span lang="en">inferred</span><span lang="zh">推断</span></span>
+        <span><span class="dot" style="background:var(--missing)"></span><span lang="en">missing</span><span lang="zh">缺失</span></span>
+      </div>
+
+      <div class="cover-card" id="COVER-00">
+        <div class="id-row"><span>COVER-00</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+        <h3><span lang="en">Kicks — KICK's Cheer &amp; Gifting System</span><span lang="zh">Kicks——KICK 平台的打赏与送礼系统</span></h3>
+        <p>
+          <span lang="en">KICK's answer to Twitch's Bits — a virtual currency viewers buy and send to support streamers live.</span>
+          <span lang="zh">KICK 对标 Twitch Bits 的答案——一种观众可购买、用于实时支持主播的虚拟货币。</span>
+        </p>
+        <div class="cover-meta">
+          <span lang="en">Role: Product Designer, solo — owned design end-to-end across web and mobile · Hero artifact needed: Cheer Panel (see ASSET-01)</span>
+          <span lang="zh">角色:产品设计师,独立负责——端到端主导 Web 与移动端设计 · 需要主视觉素材:打赏面板(见 ASSET-01)</span>
+        </div>
+      </div>
+
+      <div class="slide-list" id="slideList">
+
+        <details class="slide" id="SLIDE-01">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-01</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">Kicks had to become more than a Twitch-Bits copy — it was meant to be KICK's core monetization engine.</span><span lang="zh">Kicks 不能只是 Twitch Bits 的翻版——它要成为 KICK 的核心变现引擎。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">Kicks let viewers buy virtual currency and send it to streamers as visible, animated support during a live stream. For KICK this wasn't a nice-to-have — it was a new revenue stream and the platform's answer to Twitch's most identity-defining feature. Getting it right mattered to the business model, not just the UI.</span>
+                <span lang="zh">Kicks 让观众购买虚拟货币,并在直播过程中以可见的动画形式送给主播作为支持。对 KICK 而言,这并非锦上添花——它是新的营收来源,也是平台对 Twitch 最具标志性功能的正面回应。做对这件事,关乎的是整个商业模式,而不只是界面设计。</span>
+              </div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
+              <div class="fval"><span lang="en">Hero shot of the Cheer Panel — needs production, see ASSET-01</span><span lang="zh">打赏面板的主视觉截图——待制作,见 ASSET-01</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="slide" id="SLIDE-02">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-02</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">Five stakeholder pitches in, we were still shipping a Twitch clone.</span><span lang="zh">五次向高层提案后,我们做出来的还是 Twitch 的翻版。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">Five different proposals went to senior stakeholders. None passed. Every version was, in the team's own words, essentially a tweaked Twitch clone — and even the design team wasn't satisfied. The project had run well past its timeline, and engineers were blocked waiting on a design that could ship.</span>
+                <span lang="zh">团队先后向高层提交了五版不同方案,全部未获通过。用团队自己的话说,每一版本质上都只是"改了皮肤的 Twitch"——连设计团队自己都不满意。项目早已严重超期,工程师们也在等一份能真正定稿开发的设计。</span>
+              </div>
+            </div>
+            <div class="gap-inline"><span class="gid">GAP-01</span><span lang="en">Exact duration of this stuck period (days? weeks? months?) isn't specified — affects how heavily this slide should lean on time pressure.</span><span lang="zh">这段"卡壳期"的具体时长(几天?几周?几个月?)尚未明确——会影响这一页对"时间压力"的呈现分量。</span></div>
+            <div class="gap-inline"><span class="gid">GAP-02</span><span lang="en">No description or visual of what the five rejected proposals actually looked like — a glimpse of one would sharpen the before/after contrast.</span><span lang="zh">目前没有关于五版被否方案具体样貌的描述或截图——哪怕展示其中一版,也能让"前后对比"更有说服力。</span></div>
+          </div>
+        </details>
+
+        <details class="slide" id="SLIDE-03">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-03</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">Instead of a sixth pitch, we asked what we were actually solving for.</span><span lang="zh">与其准备第六版提案,不如先搞清楚我们到底在解决什么问题。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">While the PM renegotiated the delivery timeline, instead of iterating again on the rejected direction, I pulled the PM and design team into two internal workshops. The constraint: keep the underlying system familiar — no new cognitive load for viewers — but genuinely level up the experience compared to Twitch.</span>
+                <span lang="zh">趁 PM 重新协商交付时间的空档,我没有继续在被否决的方向上打磨,而是拉上 PM 和设计团队开了两场内部工作坊。设定的原则是:保留观众熟悉的底层系统,不增加认知负担,但体验必须比 Twitch 真正高出一个层次。</span>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="slide" id="SLIDE-04">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-04</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">The real signal wasn't how much someone spent — it was whether the room noticed.</span><span lang="zh">真正重要的信号不是花了多少钱,而是这份支持有没有被全场看见。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">The workshops surfaced the actual emotional driver: viewers didn't send Kicks to feel generous — they sent Kicks to be seen supporting a streamer, in front of the whole chat. That reframe — from patronage to visibility — became the design brief for everything that followed.</span>
+                <span lang="zh">工作坊挖出了真正的情感驱动力:观众发送 Kicks 并不是为了展现慷慨,而是为了在整个聊天室面前"被看见"自己在支持主播。这一从"赞助心理"到"被看见"的重新定义,成为了后续一切设计的出发点。</span>
+              </div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Why this slide</span><span lang="zh">为何设为此页</span></div>
+              <div class="fval"><span lang="en">This is the story's turning point — resolve it here, and let SLIDE-09 validate it with real data later.</span><span lang="zh">这是故事的转折点——在此处揭晓,后续 SLIDE-09 再用真实数据验证它。</span></div>
+            </div>
+          </div>
+        </details>
+
+        <div class="section-divider">
+          <span lang="en">SECTION — from the reframe to the system it produced</span>
+          <span lang="zh">章节过渡——从重新定义到落地的系统</span>
+        </div>
+
+        <details class="slide" id="SLIDE-05">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-05</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">The system stayed familiar: five tiers, one panel, one glance at your balance.</span><span lang="zh">系统本身保持熟悉:五个档位、一个面板、余额一目了然。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">The Cheer Panel kept a live preview and five preset Kick tiers (1, 100, 1,000, 5,000, 10,000), reachable by clicking the Kicks icon or typing a chat command. Custom amounts snap to the nearest tier. Balance shows in both the top nav and the panel, so viewers always know if they can afford to cheer — or need to top up first.</span>
+                <span lang="zh">打赏面板保留了实时预览,以及五个预设的 Kicks 档位(1、100、1,000、5,000、10,000),可通过点击 Kicks 图标或输入聊天指令打开。自定义金额会自动匹配到最接近的档位。余额同时显示在顶部导航栏与面板中,让观众随时清楚自己是否有余额打赏,或是否需要先充值。</span>
+              </div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
+              <div class="fval"><span lang="en">Cheer Panel walkthrough — needs production, see ASSET-01</span><span lang="zh">打赏面板演示——待制作,见 ASSET-01</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="slide" id="SLIDE-06">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-06</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">Bigger gifts took more of the room: escalating animation, chat space, and a pinned spotlight.</span><span lang="zh">礼物越大,占据的空间就越多:动画升级、聊天区曝光,还有置顶高光。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">Higher tiers trigger bigger, more striking animations and claim more visible chat real estate. Large gifts also get a pinned card — avatar, amount, and a gradient countdown — in a time-based queue under the leaderboard, borrowing from YouTube's model for spotlighting big moments. Click to expand and read the full message.</span>
+                <span lang="zh">档位越高,触发的动画就越震撼,占据的聊天区域也越大。大额礼物还会以置顶卡片的形式呈现——头像、金额、渐变倒计时条——出现在排行榜下方的时间序列队列中,借鉴了 YouTube 突出重大时刻的做法。点击卡片即可展开查看完整消息。</span>
+              </div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
+              <div class="fval"><span lang="en">Pinned gift message + chat takeover — needs production, see ASSET-02</span><span lang="zh">置顶礼物消息与聊天区高光——待制作,见 ASSET-02</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="slide" id="SLIDE-07">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-07</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">One Gift Message component, reworked until preview, chat, and pinned card all told the same story.</span><span lang="zh">同一个礼物消息组件,反复打磨,直到预览、聊天与置顶三处的呈现完全一致。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">Originally, the gift message existed as two separate designs. We consolidated them into one component reused across preview, chat, and the pinned card — simpler to build, easier to maintain for MVP and beyond. We also retested and reshuffled which colors mapped to which tier after seeing them in the live flow.</span>
+                <span lang="zh">最初,礼物消息存在两套独立设计。我们将其合并为一个组件,在预览、聊天和置顶卡片三处复用——降低了开发成本,也更便于 MVP 及后续迭代的维护。在实际流程中测试后,我们还重新调整了各档位对应的颜色映射。</span>
+              </div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
+              <div class="fval"><span lang="en">Before/after of the two-design → one-component consolidation — needs production, see ASSET-03</span><span lang="zh">"两套设计→一个组件"的前后对比——待制作,见 ASSET-03</span></div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Why this slide</span><span lang="zh">为何设为此页</span></div>
+              <div class="fval"><span lang="en">This is the plan's one real design-iteration beat: before → evidence → changed decision → after.</span><span lang="zh">这是本次故事中唯一一处真实的"设计迭代"环节:改前 → 发现问题 → 调整决策 → 改后。</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="slide" id="SLIDE-08">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-08</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">It shipped mid-timeline, read as genuinely different from Twitch, and became the system other Kicks features build on.</span><span lang="zh">项目在时间线中段完成交付,体验上真正区别于 Twitch,并成为了后续 Kicks 相关功能的基础系统。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">Kicks launched despite starting the redesign already behind schedule. It shipped as a coherent system, not a one-off skin — later features like Goal Setting and Bounties built directly on its Kicks-cost logic and tier language.</span>
+                <span lang="zh">尽管重新设计是在项目已经延期的情况下才启动,Kicks 最终还是顺利上线。它作为一套完整的系统交付,而非一次性的换皮——后续的 Goal Setting、Bounties 等功能都直接沿用了 Kicks 的计费逻辑与档位语言。</span>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="slide" id="SLIDE-09">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-09</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">Week one: seven-figure volume — and almost all of it in claps, not subscriptions.</span><span lang="zh">上线第一周:交易额达七位数——但几乎全部集中在"鼓掌",而非"订阅式"消费。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">Kicks generated seven-figure transaction volume in its first week. But the real insight was in the breakdown: repeat-sending behavior clustered almost entirely on the cheapest tier. Viewers weren't using Kicks as patronage — they were using it as reaction. That reshaped priorities toward polishing the cheap, expressive tiers rather than chasing high-value sends.</span>
+                <span lang="zh">Kicks 上线首周便产生了七位数的交易额。但真正有价值的洞察藏在数据分布里:重复发送行为几乎完全集中在最低档位。观众并不是把 Kicks 当作"赞助",而是当作一种"反应"。这一发现让团队重新调整了优先级——把精力放在打磨低价、富有表现力的档位上,而不是一味追逐高价值打赏。</span>
+              </div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
+              <div class="fval"><span lang="en">Tier-distribution visual — needs production, see ASSET-04</span><span lang="zh">档位分布可视化——待制作,见 ASSET-04</span></div>
+            </div>
+            <div class="gap-inline"><span class="gid">GAP-04</span><span lang="en">Exact figures ("seven-figure," cheapest-tier share) are self-reported with no dashboard artifact — decide whether to cite numbers or keep this qualitative.</span><span lang="zh">"七位数""最低档位占比"等具体数字均为口述,没有仪表盘等佐证——需要决定是引用具体数字,还是保持定性描述。</span></div>
+          </div>
+        </details>
+
+        <details class="slide" id="SLIDE-10">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-10</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">The lesson: define what you're measuring before launch — not after you already have the number.</span><span lang="zh">复盘所得:上线前就该定义清楚要衡量什么——而不是等有了数字之后才回头解释。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">I pushed for A/B testing at launch; the call was to ship and iterate instead, and that iteration never fully happened. The lesson wasn't about this feature's numbers — it was about sequencing: run the reframing workshop before five rounds of rejection, not after, and fight harder for instrumentation before launch, not after.</span>
+                <span lang="zh">我当时争取过上线前进行 A/B 测试,但最终决定是先上线再迭代——而这个"迭代"后来并没有真正发生。这次复盘的重点不在于这个功能本身的数字,而在于节奏本身:重新定义问题的工作坊应该在五轮被否决之前就做,而不是被逼到走投无路才做;上线前就该更坚持为埋点和实验做争取,而不是事后才后悔。</span>
+              </div>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <section id="checklist">
+      <h2 class="section-title"><span lang="en">Evidence checklist</span><span lang="zh">证据清单</span></h2>
+      <p class="section-sub"><span lang="en">The eight highest-leverage items to verify or produce next.</span><span lang="zh">接下来最值得优先核实或制作的八项内容。</span></p>
+      <div class="wrap-table">
+      <table class="checklist">
+        <thead>
+          <tr>
+            <th><span lang="en">Linked to</span><span lang="zh">关联</span></th>
+            <th><span lang="en">Item</span><span lang="zh">事项</span></th>
+            <th><span lang="en">Status</span><span lang="zh">状态</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><a class="id-link" href="#SLIDE-02">SLIDE-02</a></td><td><span lang="en">Five stakeholder proposals rejected — self-reported, no meeting notes or deck cited</span><span lang="zh">五版方案被否——为口述,未引用会议记录或提案文件</span></td><td><span class="chip stated-only">stated-only</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-04">SLIDE-04</a></td><td><span lang="en">Reframe: spend size → being seen</span><span lang="zh">重新定义:花费金额 → 被看见</span></td><td><span class="chip stated-only">stated-only</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-05">SLIDE-05</a></td><td><span lang="en">Cheer Panel tier mechanics</span><span lang="zh">打赏面板的档位机制</span></td><td><span class="chip supported">supported</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-06">SLIDE-06</a></td><td><span lang="en">Pinned gift message mechanics</span><span lang="zh">置顶礼物消息机制</span></td><td><span class="chip supported">supported</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-07">SLIDE-07</a></td><td><span lang="en">Gift Message component consolidation</span><span lang="zh">礼物消息组件合并</span></td><td><span class="chip supported">supported</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-09">SLIDE-09</a></td><td><span lang="en">Week-1 volume + cheapest-tier clustering</span><span lang="zh">首周交易额 + 低档位聚集现象</span></td><td><span class="chip stated-only">stated-only</span></td></tr>
+          <tr><td><a class="id-link" href="#GAP-03">GAP-03</a></td><td><span lang="en">No visual artifacts supplied yet for any slide</span><span lang="zh">目前所有页面均无视觉素材</span></td><td><span class="chip missing">missing</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-01">ASSET-01 / 02</a></td><td><span lang="en">Hero artifacts for Cheer Panel + gift chat takeover</span><span lang="zh">打赏面板与聊天区高光的主视觉素材</span></td><td><span class="chip missing"><span lang="en">production needed</span><span lang="zh">待制作</span></span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="gap-inline" id="GAP-03" style="margin-top:16px;">
+        <span class="gid">GAP-03</span>
+        <span lang="en">No screenshots, Figma frames, or mockups have been supplied yet for this project — nearly every slide currently relies on written description alone.</span>
+        <span lang="zh">目前尚未提供任何截图、Figma 页面或原型稿——几乎每一页目前都只能靠文字描述来支撑。</span>
+      </div>
+    </section>
+
+    <section id="decisions">
+      <h2 class="section-title"><span lang="en">Review decisions</span><span lang="zh">待确认问题</span></h2>
+      <div class="review-q"><span class="rid">1</span><span lang="en">Roughly how long was the "stuck" period (five rejected proposals) before the workshops — days, weeks, or months? This changes how much weight SLIDE-02 should carry.</span><span lang="zh">五版提案被拒到工作坊之间,"卡壳期"大概持续了多久——是几天、几周,还是几个月?这会影响 SLIDE-02 应该承载多大的分量。</span></div>
+      <div class="review-q"><span class="rid">2</span><span lang="en">Do you have Figma exports or product screenshots for the Cheer Panel, gift animations, and pinned message card we can use as artifacts (ASSET-01 through 03)?</span><span lang="zh">你是否有打赏面板、礼物动画、置顶消息卡片的 Figma 导出图或产品截图,可以用作素材(ASSET-01 至 03)?</span></div>
+      <div class="review-q"><span class="rid">3</span><span lang="en">Can the "seven-figure volume" and cheapest-tier-clustering numbers be cited directly, or should SLIDE-09 stay qualitative given they're from a former employer's internal data?</span><span lang="zh">"七位数交易额"及低档位聚集的具体数字是否可以直接引用,还是考虑到这是前公司内部数据,SLIDE-09 应保持定性描述?</span></div>
+    </section>
+
+    <p class="howto">
+      <span lang="en">How to review: reply in chat citing a stable ID (e.g. "SLIDE-04") or quoting the exact line you want changed, and I'll revise this plan in place.</span>
+      <span lang="zh">如何提出修改意见:在对话中直接引用固定编号(如 "SLIDE-04")或需要修改的原文,我会据此在原地修订这份故事地图。</span>
+    </p>
+
+  </main>
+</div>
+
+<script>
+  function setLang(l){
+    document.documentElement.setAttribute('data-lang', l);
+    document.getElementById('btnEn').classList.toggle('on', l==='en');
+    document.getElementById('btnZh').classList.toggle('on', l==='zh');
+    try{ localStorage.setItem('kicks-story-lang', l); }catch(e){}
+  }
+  (function(){
+    try{
+      var saved = localStorage.getItem('kicks-story-lang');
+      if(saved){ setLang(saved); }
+    }catch(e){}
+  })();
+
+  var expanded = false;
+  function toggleExpandAll(){
+    expanded = !expanded;
+    document.querySelectorAll('#slideList details.slide').forEach(function(d){ d.open = expanded; });
+    var btn = document.getElementById('expandToggle');
+    btn.setAttribute('aria-pressed', expanded ? 'true' : 'false');
+    btn.querySelector('[lang="en"]').textContent = expanded ? 'Collapse all' : 'Expand all';
+    btn.querySelector('[lang="zh"]').textContent = expanded ? '收起全部' : '展开全部';
+  }
+
+  // scroll spy + progress bar
+  var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var sections = tocLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  function onScroll(){
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+
+    var current = null;
+    sections.forEach(function(sec){
+      var rect = sec.getBoundingClientRect();
+      if(rect.top <= 120){ current = sec; }
+    });
+    tocLinks.forEach(function(a){ a.classList.remove('active'); });
+    if(current){
+      var link = tocLinks.find(function(a){ return a.getAttribute('href') === '#' + current.id; });
+      if(link) link.classList.add('active');
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // open collapsed slide when anchor targets it
+  window.addEventListener('hashchange', openTargetSlide);
+  function openTargetSlide(){
+    var id = location.hash.replace('#','');
+    var el = document.getElementById(id);
+    if(el && el.tagName === 'DETAILS'){ el.open = true; }
+  }
+  openTargetSlide();
+</script>
+</body>
+</html>
