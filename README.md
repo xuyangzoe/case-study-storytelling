@@ -39,6 +39,13 @@ The skill keeps story logic, delivery preparation, and interview defense connect
 one truthful source. It does not invent evidence, stakes, failures, emotions, metrics,
 ownership, or impact.
 
+## Also in this repository
+
+[`app/`](app/) contains **MultiCat**, a shared cat-food management app for multi-cat
+households, built from a product requirements document. It is a self-contained
+TypeScript project (Express API, React client, shared domain logic) with its own
+[README](app/README.md) and test suite, unrelated to the storytelling skill above.
+
 ## Install
 
 Install the skill from `skills/case-study-storytelling`, or copy that directory into a
