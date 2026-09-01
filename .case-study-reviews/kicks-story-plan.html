@@ -41,13 +41,8 @@
   [lang="zh"]{display:none;}
   html[data-lang="zh"] [lang="en"]{display:none;}
   html[data-lang="zh"] [lang="zh"]{display:inline;}
-  html[data-lang="zh"] .block-zh{display:block;}
-  html[data-lang="en"] .block-en{display:block;}
-  html[data-lang="zh"] .block-en{display:none;}
-  html[data-lang="en"] .block-zh{display:none;}
 
   .layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:0;max-width:1280px;margin:0 auto;min-height:100vh;}
-  @container (max-width: 900px){ }
   .sidebar{
     position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;
     padding:28px 20px;border-right:1px solid var(--border);
@@ -86,7 +81,6 @@
   .contract{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 26px;margin-top:18px;}
   .contract .q{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-faint);margin-bottom:6px;}
   .contract .question-text{font-size:17px;margin-bottom:18px;color:var(--text);}
-  .contract .arrow{color:var(--text-faint);margin:0 8px;}
   .contract .argument-text{font-size:17px;color:var(--text);font-weight:500;}
   .review-link{font-size:14px;margin-top:14px;}
 
@@ -132,6 +126,8 @@
   .slide-body .field .fval{font-size:14.5px;color:var(--text);}
   .gap-inline{margin-top:10px;background:var(--stated-bg);border:1px solid var(--stated-border);border-radius:8px;padding:10px 12px;font-size:13.5px;color:#5a4a1e;}
   .gap-inline .gid{font-family:var(--mono);font-weight:700;margin-right:6px;color:var(--stated);}
+  .care-inline{margin-top:10px;background:var(--inferred-bg);border:1px solid var(--inferred-border);border-radius:8px;padding:10px 12px;font-size:13.5px;color:#254a80;}
+  .care-inline .gid{font-family:var(--mono);font-weight:700;margin-right:6px;color:var(--inferred);}
 
   .section-divider{margin:18px 0;padding:10px 14px;background:var(--accent-soft);border-radius:8px;font-size:13.5px;color:#5a4530;}
 
@@ -177,6 +173,8 @@
           <li><a href="#SLIDE-09">SLIDE-09</a></li>
           <li><a href="#SLIDE-10">SLIDE-10</a></li>
           <li><a href="#SLIDE-11">SLIDE-11</a></li>
+          <li><a href="#SLIDE-12">SLIDE-12</a></li>
+          <li><a href="#SLIDE-13">SLIDE-13</a></li>
         </ul>
       </li>
       <li><a href="#checklist"><span lang="en">Evidence checklist</span><span lang="zh">证据清单</span></a></li>
@@ -199,8 +197,8 @@
       <div class="kicker"><span lang="en">Case study story plan</span><span lang="zh">案例故事架构</span></div>
       <h1 class="title">Kicks — KICK <span lang="en">Cheer &amp; Gifting System</span><span lang="zh">打赏与送礼系统</span></h1>
       <p class="subtitle">
-        <span lang="en">Story architecture pass · portfolio audience · sourced from Notion project notes</span>
-        <span lang="zh">故事架构初稿 · 作品集展示场景 · 素材来源于 Notion 项目笔记</span>
+        <span lang="en">Story architecture pass · portfolio audience · sourced from Notion project notes and your review history</span>
+        <span lang="zh">故事架构初稿 · 作品集展示场景 · 素材来源于 Notion 项目笔记与你补充的评审经过</span>
       </p>
     </header>
 
@@ -213,7 +211,7 @@
       <div class="assumptions">
         <div class="assumption-card">
           <div class="label"><span lang="en">Source</span><span lang="zh">素材来源</span></div>
-          <div class="value"><span lang="en">Notion "KICK" workspace pages: design specs (Cheering with Kicks, Kicks, KICKs pinned gift msg, New pre) + first-person interview-prep retrospective + team working-pattern context supplied directly</span><span lang="zh">Notion "KICK" 工作区页面:设计说明文档(Cheering with Kicks、Kicks、KICKs pinned gift msg、New pre)+ 第一人称面试准备复盘文字 + 你直接补充的团队协作模式说明</span></div>
+          <div class="value"><span lang="en">Notion "KICK" design specs; your five-week review history; team working-pattern context; the V1/V2 wireframe photo and the Twitch Cheering-with-Bits reference</span><span lang="zh">Notion "KICK" 设计文档;你补充的五周评审经过;团队协作模式说明;V1/V2 手绘线框图照片与 Twitch Cheering with Bits 参考截图</span></div>
         </div>
         <div class="assumption-card">
           <div class="label"><span lang="en">Audience mode</span><span lang="zh">受众模式</span></div>
@@ -225,7 +223,7 @@
         </div>
         <div class="assumption-card">
           <div class="label"><span lang="en">Slide count</span><span lang="zh">页数</span></div>
-          <div class="value"><span lang="en">Cover + 10 slides — sized to the evidence depth currently available (assumption)</span><span lang="zh">封面 + 10 页——根据当前已掌握的证据深度估算(此为假设)</span></div>
+          <div class="value"><span lang="en">Cover + 13 slides — the review history added a real arc that earns the extra beats</span><span lang="zh">封面 + 13 页——补充的评审经过带来了真实的故事弧线,值得多出这几个环节</span></div>
         </div>
       </div>
     </section>
@@ -235,13 +233,13 @@
       <div class="contract">
         <div class="q"><span lang="en">Central question</span><span lang="zh">核心问题</span></div>
         <div class="question-text">
-          <span lang="en">How do you turn a monetization feature nobody could explain a real reason to use into something viewers actually wanted to do, live, in the moment?</span>
-          <span lang="zh">当没有人能说清楚一个变现功能"为什么值得用"时,要如何把它变成观众在直播当下真心想做的一件事?</span>
+          <span lang="en">What do you do when eight versions of a feature have failed review and the problem isn't the screens — it's that you can't explain why any of them are right?</span>
+          <span lang="zh">当一个功能的八个版本都没能通过评审,而问题并不出在界面上——而是你说不清它们凭什么是对的——这时候该怎么办?</span>
         </div>
         <div class="q"><span lang="en">Recommended argument</span><span lang="zh">推荐的故事主张</span></div>
         <div class="argument-text">
-          <span lang="en">By digging past the mechanic — a currency you spend — into the actual behavioral driver behind it — wanting to be seen supporting someone in front of a crowd — a stalled, five-times-rejected feature became a gifting system with a real reason to exist: one that shipped, launched to real transaction volume, and revealed that KICK's actual engagement currency was visibility, not value.</span>
-          <span lang="zh">通过挖穿表层机制——一种可以花费的虚拟货币——找到其背后真正的行为驱动力——想在众人面前被看见自己在支持某人——一个卡壳、被五次否决的功能,最终变成了一套"真正有存在理由"的送礼系统:它成功上线、产生了真实交易量,也揭示出 KICK 真正的参与货币其实是被看见,而不是花费的金额。</span>
+          <span lang="en">Faithfully executing a PRD produced eight versions I couldn't defend; only when I stopped designing and answered the question I'd skipped — what does a viewer actually get for this? — did the system resolve into tiered gifting built around being seen, which shipped, launched to real volume, and showed that KICK's engagement currency was visibility, not value.</span>
+          <span lang="zh">忠实执行 PRD 换来的是八个我无法为之辩护的版本;直到我停下设计、回答那个被我跳过的问题——观众到底能从中得到什么?——整套系统才收敛成一个围绕"被看见"构建的分档送礼机制。它成功上线、产生了真实交易量,也证明了 KICK 真正的参与货币是被看见,而不是花费的金额。</span>
         </div>
         <p class="review-link">
           <span lang="en">↓ Jump to <a href="#decisions">Review decisions</a> for the 3 things worth confirming before this goes further.</span>
@@ -254,23 +252,23 @@
       <h2 class="section-title"><span lang="en">Findings</span><span lang="zh">核心发现</span></h2>
       <ul class="findings">
         <li>
-          <span lang="en">The genuine low (five rejected pitches) and the workshop reframe are strong and well-supported by your own account — they should be the narrative spine, not the feature mechanics.</span>
-          <span lang="zh">真实的低谷时刻(五版提案被拒)和工作坊里的重新定义,是你自己亲历且有力的素材——它们应该是故事的主干,而不是功能机制本身。</span>
+          <span lang="en"><strong>Correction worth making before your next interview:</strong> "five proposals rejected by senior stakeholders" doesn't match the record. V1 was approved by everyone; V2 was rejected at the foundation by the design head and CCO; the mobile round was rejected again; the five later drafts were rejected by your lead and never reached the head. The accurate sequence is more specific and holds up under questioning.</span>
+          <span lang="zh"><strong>下次面试前值得修正的一点:</strong>"五版方案被高层否决"和实际经过对不上。V1 是所有人都通过的;V2 才是被 design head 和首席创意官从根基上否掉;移动端那轮又被否一次;后面五版草稿是被你的 lead 否的,从未送到 head 面前。准确的序列更具体,也更经得起追问。</span>
         </li>
         <li>
-          <span lang="en">The strongest evidence you currently have is written product-spec documentation, not screenshots — nearly every slide still needs a visual artifact before this is presentable.</span>
-          <span lang="zh">目前最扎实的证据是文字形式的产品设计文档,而不是截图——几乎每一页在可展示之前都还需要补充视觉素材。</span>
+          <span lang="en">The design head's second and third objections — cheer messages get lost in a big stream, and there's no reward or recognition — <em>are</em> the "being seen" insight. Telling it as "he named the problem and I couldn't act on it yet" is more honest and more impressive than telling it as a discovery you made alone.</span>
+          <span lang="zh">Design head 的第二、三条质疑——打赏消息在大主播直播间里会被淹没、观众得不到任何奖励或认可——<em>本身就是</em>"被看见"这个洞察。把它讲成"他点出了问题,而我当时还接不住",比讲成"我独自发现了它"更诚实,也更有说服力。</span>
         </li>
         <li>
-          <span lang="en">There was no A/B testing process and no post-launch loop for changing a design based on how people used it. That's the honest frame for the closing lesson — and it means the "reshaped our priorities" claim on SLIDE-10 needs checking before an interviewer probes it.</span>
-          <span lang="zh">团队当时没有 A/B testing 流程,上线后也没有根据用户实际使用情况修改设计的机制。这才是结尾教训的诚实前提——同时也意味着 SLIDE-10 里"重新调整了优先级"这个说法,需要在面试官追问之前先自行核实。</span>
+          <span lang="en">The week-five dynamic is real but risky to tell: your lead rejected five drafts without escalating them, and directed mobile to diverge from web against KICK's own ~95% parity standard. Written as-is below, the focus stays on your judgment. Framed even slightly as blame, it reads to peers and HR as deflection.</span>
+          <span lang="zh">第五周那段经历是真实的,但讲起来有风险:你的 lead 否掉了五版草稿却没有往上送,还要求移动端脱离 Web 端,而这与 KICK 自己约 95% 一致性的标准相悖。下文的写法把重心放在你自己的判断上;一旦稍微写成归咎他人,在同行和 HR 听来就会像是在推卸责任。</span>
         </li>
       </ul>
     </section>
 
     <section id="storymap">
       <h2 class="section-title"><span lang="en">Story map</span><span lang="zh">故事地图</span></h2>
-      <p class="section-sub"><span lang="en">Cover, then ten slides in causal order. Evidence status is marked in the top-right of each row.</span><span lang="zh">先是封面,随后十页按因果顺序展开。每一行右上角标注了证据状态。</span></p>
+      <p class="section-sub"><span lang="en">Cover, then thirteen slides in causal order. Evidence status is marked in the top-right of each row.</span><span lang="zh">先是封面,随后十三页按因果顺序展开。每一行右上角标注了证据状态。</span></p>
       <div class="legend">
         <span><span class="dot" style="background:var(--supported)"></span><span lang="en">supported</span><span lang="zh">有据可查</span></span>
         <span><span class="dot" style="background:var(--stated)"></span><span lang="en">stated-only</span><span lang="zh">仅口述未验证</span></span>
@@ -279,15 +277,15 @@
       </div>
 
       <div class="cover-card" id="COVER-00">
-        <div class="id-row"><span>COVER-00</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+        <div class="id-row"><span>COVER-00</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
         <h3><span lang="en">Kicks — KICK's Cheer &amp; Gifting System</span><span lang="zh">Kicks——KICK 平台的打赏与送礼系统</span></h3>
         <p>
           <span lang="en">KICK's answer to Twitch's Bits — a virtual currency viewers buy and send to support streamers live.</span>
           <span lang="zh">KICK 对标 Twitch Bits 的答案——一种观众可购买、用于实时支持主播的虚拟货币。</span>
         </p>
         <div class="cover-meta">
-          <span lang="en">Role: Product Designer, solo — owned design end-to-end across web and mobile · Hero artifact needed: Cheer Panel (see ASSET-01)</span>
-          <span lang="zh">角色:产品设计师,独立负责——端到端主导 Web 与移动端设计 · 需要主视觉素材:打赏面板(见 ASSET-01)</span>
+          <span lang="en">Role: Product Designer, solo — owned design end-to-end across web and mobile · Hero artifact: the shipped Cheer Panel (see ASSET-01)</span>
+          <span lang="zh">角色:产品设计师,独立负责——端到端主导 Web 与移动端设计 · 主视觉素材:上线版打赏面板(见 ASSET-01)</span>
         </div>
       </div>
 
@@ -305,40 +303,44 @@
                 <span lang="zh">在 KICK 上,观众会对直播中的精彩时刻实时产生情绪反应,却没有一种轻量的方式,把这份支持可见地表达给主播和聊天室。对业务来说,这同样是一个缺口:没有与真实、即时参与绑定的营收机制。Kicks 想要同时解决这两个问题——既给观众一种表达支持的方式,也给 KICK 带来一条建立在真实行为之上、而非生硬嫁接的营收渠道。</span>
               </div>
             </div>
-            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
-              <div class="fval"><span lang="en">Hero shot of the Cheer Panel — needs production, see ASSET-01</span><span lang="zh">打赏面板的主视觉截图——待制作,见 ASSET-01</span></div>
-            </div>
           </div>
         </details>
 
         <details class="slide" id="SLIDE-02">
           <summary>
-            <div class="summary-row1"><span class="id">SLIDE-02</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
-            <div class="summary-row2"><span class="slide-title"><span lang="en">Five proposals in, no one could explain why a viewer would actually want to send one.</span><span lang="zh">五版方案过后,没有人能说清楚观众到底为什么会想发送一份礼物。</span></span></div>
+            <div class="summary-row1"><span class="id">SLIDE-02</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">Version 1 followed the PRD exactly — Twitch's logic, our UI — and everyone approved it.</span><span lang="zh">第一版严格遵循 PRD——Twitch 的逻辑,我们的 UI——而且所有人都通过了。</span></span></div>
           </summary>
           <div class="slide-body">
             <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
               <div class="fval">
-                <span lang="en">Most features on our roadmap were ones Twitch already had, so the working pattern was to match the mechanic and move on. That was efficient for table-stakes features. It didn't hold here: five proposals went to senior stakeholders and none passed. Each one functioned — buy currency, trigger an animation — but neither the stakeholders nor the design team could say what would make a viewer genuinely want to do it. The project ran well past its timeline, and engineers were blocked waiting on a direction to build.</span>
-                <span lang="zh">我们排期上的大多数功能都是 Twitch 已经有的,所以团队惯常的做法是:对齐机制,然后往下走。对于那些"必备功能"来说,这样做很高效。但在这里行不通:五版方案递到高层,全部未获通过。每一版在机制上都能跑通——购买货币、触发动画——但无论高层还是设计团队,都说不清楚究竟是什么会让观众真心想去做这件事。项目早已严重超期,工程师们也在等一个能定稿开发的方向。</span>
+                <span lang="en">The PRD asked for Twitch's Cheering with Bits, so that's what I built: the same mechanic, the same logic, with the UI reworked — tiers laid out three per row, and a tap animation that popped "+1" as you added a Kick. I took the low-fi prototype to my mentor and design lead, then to the design head and chief creative officer. All four said it was fine to keep going. The notes were font sizes and spacing.</span>
+                <span lang="zh">PRD 要求对齐 Twitch 的 Cheering with Bits,我就照着做了:机制和逻辑完全一致,只重做了 UI——档位改成每行三个,并加入点击动效,加一个 Kick 时弹出"+1"。我把低保真原型先后拿给 mentor 和 design lead 看,再给 design head 和首席创意官看。四个人都说可以继续推进,反馈集中在字号和间距上。</span>
               </div>
             </div>
-            <div class="gap-inline"><span class="gid">GAP-01</span><span lang="en">Exact duration of this stuck period (days? weeks? months?) isn't specified — affects how heavily this slide should lean on time pressure.</span><span lang="zh">这段"卡壳期"的具体时长(几天?几周?几个月?)尚未明确——会影响这一页对"时间压力"的呈现分量。</span></div>
-            <div class="gap-inline"><span class="gid">GAP-02</span><span lang="en">No description or visual of what the five rejected proposals actually looked like — a glimpse of one would sharpen the before/after contrast.</span><span lang="zh">目前没有关于五版被否方案具体样貌的描述或截图——哪怕展示其中一版,也能让"前后对比"更有说服力。</span></div>
+            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
+              <div class="fval"><span lang="en">Twitch Cheering-with-Bits reference beside your own wireframe — both in hand, see ASSET-02</span><span lang="zh">Twitch Cheering with Bits 参考截图与你自己的线框图并置——两者均已有,见 ASSET-02</span></div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Why this slide</span><span lang="zh">为何设为此页</span></div>
+              <div class="fval"><span lang="en">Establishes the belief and why it was reasonable. Without the approval, the rejection that follows reads as bad work rather than a wrong premise.</span><span lang="zh">交代当时的判断以及它为何合理。如果不写"通过了",后面的否决就会被读成"活儿做得差",而不是"前提错了"。</span></div>
+            </div>
           </div>
         </details>
 
         <details class="slide" id="SLIDE-03">
           <summary>
             <div class="summary-row1"><span class="id">SLIDE-03</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
-            <div class="summary-row2"><span class="slide-title"><span lang="en">Instead of a sixth pitch, we asked what would actually make someone want to hit send.</span><span lang="zh">与其准备第六版提案,不如先搞清楚到底是什么会让人真心想按下发送键。</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">The full flow got a different answer: three objections that went to the foundation.</span><span lang="zh">完整流程换来了截然不同的结论:三个直指根基的质疑。</span></span></div>
           </summary>
           <div class="slide-body">
             <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
               <div class="fval">
-                <span lang="en">While the PM renegotiated the delivery timeline, instead of iterating again on the same rejected direction, I pulled the PM and design team into two internal workshops. The goal: find the real behavioral reason someone sends a gift mid-stream — not just refine the payment mechanic. The one constraint we held onto: keep the underlying system familiar, so we weren't adding new cognitive load for viewers already using it.</span>
-                <span lang="zh">趁 PM 重新协商交付时间的空档,我没有继续在被否决的方向上打磨,而是拉上 PM 和设计团队开了两场内部工作坊。目标是:找到观众在直播过程中愿意发送礼物的真正行为动机——而不只是优化支付机制本身。我们保留的一条原则是:底层系统要保持熟悉,不给已经在使用的观众增加新的认知负担。</span>
+                <span lang="en">Week two I presented the complete web and mobile flow — sufficient and insufficient balance, and how a cheer landed in chat afterwards. The design head and CCO rejected it at the foundation. One: the process was far too complicated for a decision viewers make in two or three seconds; miss the moment and it's gone. Two: in a big streamer's chat, a cheer message is indistinguishable from an ordinary one. Three: why would anyone spend money here with no reward, badge, or recognition in return?</span>
+                <span lang="zh">第二周,我展示了完整的 Web 与移动端流程——余额充足与不足两种情况,以及打赏后在聊天室里的呈现效果。Design head 和首席创意官从根基上否定了这一版。其一:对于一个只有两三秒决策窗口的行为来说,这个流程太复杂了,错过那个瞬间就没有了。其二:在大主播的聊天室里,打赏消息和普通消息根本区分不出来。其三:观众为什么要在这里花钱,却得不到任何奖励、徽章或认可?</span>
               </div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
+              <div class="fval"><span lang="en">The V2 wireframe showing both balance states and the chat-room result — in hand, see ASSET-02</span><span lang="zh">展示两种余额状态与聊天室结果的 V2 线框图——已有,见 ASSET-02</span></div>
             </div>
           </div>
         </details>
@@ -346,76 +348,77 @@
         <details class="slide" id="SLIDE-04">
           <summary>
             <div class="summary-row1"><span class="id">SLIDE-04</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
-            <div class="summary-row2"><span class="slide-title"><span lang="en">The real signal wasn't how much someone spent — it was whether the room noticed.</span><span lang="zh">真正重要的信号不是花了多少钱,而是这份支持有没有被全场看见。</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">I kept producing new versions; every review failed on the same thing — I couldn't defend them.</span><span lang="zh">我不停地产出新版本;而每次评审都栽在同一件事上——我无法为自己的设计辩护。</span></span></div>
           </summary>
           <div class="slide-body">
             <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
               <div class="fval">
-                <span lang="en">The workshops surfaced the actual driver: viewers didn't send Kicks to feel generous — they sent Kicks to be seen supporting a streamer, in front of the whole chat. That single insight gave the team something concrete to design toward — and to defend to stakeholders — instead of chasing a vaguer goal of "make it feel less like Twitch."</span>
-                <span lang="zh">工作坊挖出了真正的驱动力:观众发送 Kicks 并不是为了展现慷慨,而是为了在整个聊天室面前"被看见"自己在支持主播。这一个洞察,给了团队一个具体的设计目标,也让方案有了可以向高层清晰说明和辩护的理由——而不再是含糊地追求"看起来不要太像 Twitch"。</span>
+                <span lang="en">Weeks three to five: a mobile version built off the same web UI, then another round with the head, then five more mobile drafts for my lead — rejected, and none of them reached the head. The dissatisfaction was less about the screens than about my answers. Our own vocabulary had bloated — Cheer, Kicks, Cheer message, Cheer amount, Cheermotes — and I couldn't define the terms cleanly or answer the logic behind them. Under delivery pressure I had been designing to hand something over, not to understand it.</span>
+                <span lang="zh">第三到第五周:先是基于同一套 Web UI 做的移动端版本,接着又和 head 过了一轮,之后又给 lead 做了五版移动端草稿——全部被否,而且都没有再送到 head 面前。不满与其说是针对界面,不如说是针对我的回答。我们自己的术语已经膨胀失控——Cheer、Kicks、Cheer message、Cheer amount、Cheermotes——我没法清晰地逐一定义,也答不上背后的逻辑。在交付压力下,我一直在为"把东西交出去"而设计,而不是为"理解它"而设计。</span>
               </div>
             </div>
-            <div class="field"><div class="flabel"><span lang="en">Why this slide</span><span lang="zh">为何设为此页</span></div>
-              <div class="fval"><span lang="en">This is the story's turning point — resolve it here, and let SLIDE-09 validate it with real data later.</span><span lang="zh">这是故事的转折点——在此处揭晓,后续 SLIDE-09 再用真实数据验证它。</span></div>
+            <div class="field"><div class="flabel"><span lang="en">Also in this beat</span><span lang="zh">这一环节还包含</span></div>
+              <div class="fval"><span lang="en">My lead directed mobile to diverge from web. I raised that KICK's own standard kept web, mobile, and TV around 95% consistent outside edge cases — and designed the divergent versions anyway.</span><span lang="zh">Lead 要求移动端脱离 Web 端。我提出过 KICK 自己的标准是:除边缘情况外,Web、移动端与 TV 端保持约 95% 一致——但最终我还是照着做了这些分叉的版本。</span></div>
+            </div>
+            <div class="care-inline"><span class="gid">CARE</span><span lang="en">Tell this beat from your own decisions. The lead's direction is context, never the explanation for why the project stalled — see finding 3.</span><span lang="zh">这一段要从你自己的决策来讲。Lead 的指示只是背景,绝不能被讲成项目卡住的原因——参见核心发现第 3 条。</span></div>
+            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
+              <div class="fval"><span lang="en">A compressed timeline of the eight versions — routine attempts subordinated, the two head-level rejections emphasized. Needs production, see ASSET-03</span><span lang="zh">八个版本的压缩时间线——常规尝试弱化处理,两次 head 层面的否决重点突出。待制作,见 ASSET-03</span></div>
             </div>
           </div>
         </details>
 
-        <div class="section-divider">
-          <span lang="en">SECTION — from the reframe to the system it produced</span>
-          <span lang="zh">章节过渡——从重新定义到落地的系统</span>
-        </div>
-
         <details class="slide" id="SLIDE-05">
           <summary>
-            <div class="summary-row1"><span class="id">SLIDE-05</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
-            <div class="summary-row2"><span class="slide-title"><span lang="en">The system stayed familiar: five tiers, one panel, one glance at your balance.</span><span lang="zh">系统本身保持熟悉:五个档位、一个面板、余额一目了然。</span></span></div>
+            <div class="summary-row1"><span class="id">SLIDE-05</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">Eight versions in, I stopped designing and went back to the question I'd skipped.</span><span lang="zh">做到第八版,我停下了设计,回到那个我一直跳过的问题。</span></span></div>
           </summary>
           <div class="slide-body">
             <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
               <div class="fval">
-                <span lang="en">The Cheer Panel kept a live preview and five preset Kick tiers (1, 100, 1,000, 5,000, 10,000), reachable by clicking the Kicks icon or typing a chat command. Custom amounts snap to the nearest tier. Balance shows in both the top nav and the panel, so viewers always know if they can afford to cheer — or need to top up first.</span>
-                <span lang="zh">打赏面板保留了实时预览,以及五个预设的 Kicks 档位(1、100、1,000、5,000、10,000),可通过点击 Kicks 图标或输入聊天指令打开。自定义金额会自动匹配到最接近的档位。余额同时显示在顶部导航栏与面板中,让观众随时清楚自己是否有余额打赏,或是否需要先充值。</span>
+                <span lang="en">Instead of a ninth draft, I asked my PM and the design team for two working sessions while the PM renegotiated the delivery date. The goal wasn't a new layout — it was to answer the head's questions properly: what does a viewer actually get for this, and why would they do it inside a two-second window? One constraint I held onto: keep the underlying system familiar, so we weren't stacking new cognitive load on top of everything else.</span>
+                <span lang="zh">我没有再做第九版,而是请 PM 和设计团队一起开两场工作会,同时由 PM 去重新协商交付时间。目标不是一个新的排版,而是把 head 的问题真正回答清楚:观众到底能从中得到什么,以及他们为什么会在两秒钟的窗口里去做这件事。我坚持的一条约束是:底层系统保持熟悉,不要在其他问题之上再叠加新的认知负担。</span>
               </div>
-            </div>
-            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
-              <div class="fval"><span lang="en">Cheer Panel walkthrough — needs production, see ASSET-01</span><span lang="zh">打赏面板演示——待制作,见 ASSET-01</span></div>
             </div>
           </div>
         </details>
 
         <details class="slide" id="SLIDE-06">
           <summary>
-            <div class="summary-row1"><span class="id">SLIDE-06</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
-            <div class="summary-row2"><span class="slide-title"><span lang="en">Bigger gifts took more of the room: escalating animation, chat space, and a pinned spotlight.</span><span lang="zh">礼物越大,占据的空间就越多:动画升级、聊天区曝光,还有置顶高光。</span></span></div>
+            <div class="summary-row1"><span class="id">SLIDE-06</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">The answer was already in the objections: viewers pay to be seen, not to feel generous.</span><span lang="zh">答案其实早就藏在那些质疑里:观众付费是为了被看见,而不是为了感到慷慨。</span></span></div>
           </summary>
           <div class="slide-body">
             <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
               <div class="fval">
-                <span lang="en">Higher tiers trigger bigger, more striking animations and claim more visible chat real estate. Large gifts also get a pinned card — avatar, amount, and a gradient countdown — in a time-based queue under the leaderboard, borrowing from YouTube's model for spotlighting big moments. Click to expand and read the full message.</span>
-                <span lang="zh">档位越高,触发的动画就越震撼,占据的聊天区域也越大。大额礼物还会以置顶卡片的形式呈现——头像、金额、渐变倒计时条——出现在排行榜下方的时间序列队列中,借鉴了 YouTube 突出重大时刻的做法。点击卡片即可展开查看完整消息。</span>
+                <span lang="en">Once we asked what a viewer actually gets, the driver was obvious and it was social: people send to be seen supporting a streamer, in front of the whole room. Recognition was the reward the head had asked about. Getting lost in chat was the reason it wasn't working. His second and third objections had been pointing here the whole time — I just couldn't hear them as one problem until we stopped producing and looked.</span>
+                <span lang="zh">一旦开始追问观众到底得到了什么,驱动力就变得很清楚,而且是社交层面的:人们发送打赏,是为了在全场面前被看见自己在支持主播。"认可"正是 head 追问的那个奖励;"淹没在聊天流里"正是它不成立的原因。他的第二和第三条质疑其实一直指向这里——只是在我们停下产出、认真去看之前,我一直没能把它们听成同一个问题。</span>
               </div>
             </div>
-            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
-              <div class="fval"><span lang="en">Pinned gift message + chat takeover — needs production, see ASSET-02</span><span lang="zh">置顶礼物消息与聊天区高光——待制作,见 ASSET-02</span></div>
+            <div class="field"><div class="flabel"><span lang="en">Why this slide</span><span lang="zh">为何设为此页</span></div>
+              <div class="fval"><span lang="en">The story's turning point. Crediting the head here is what makes it credible — and SLIDE-12 validates it with real data later.</span><span lang="zh">故事的转折点。把功劳如实归给 head,正是这一页可信的原因——后续 SLIDE-12 再用真实数据验证它。</span></div>
             </div>
           </div>
         </details>
 
+        <div class="section-divider">
+          <span lang="en">SECTION — from the question answered to the system it produced</span>
+          <span lang="zh">章节过渡——从问题被回答,到它带来的系统</span>
+        </div>
+
         <details class="slide" id="SLIDE-07">
           <summary>
             <div class="summary-row1"><span class="id">SLIDE-07</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
-            <div class="summary-row2"><span class="slide-title"><span lang="en">Web shipped first — so I handed off mobile complete before it was ever scheduled.</span><span lang="zh">Web 端先上线——所以我在移动端排期之前,就把它的设计一并交付了。</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">The system stayed familiar: five tiers, one panel, one glance at your balance.</span><span lang="zh">系统本身保持熟悉:五个档位、一个面板、余额一目了然。</span></span></div>
           </summary>
           <div class="slide-body">
             <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
               <div class="fval">
-                <span lang="en">Our pattern was web-first: wireframes for web, approval, then mobile adapted from the approved design — scaled one-to-one, or simplified where the smaller surface demanded it. Most KICK viewers and streamers were on web, and with limited engineering capacity, mobile shipped when availability, feasibility, and timing allowed rather than on a fixed date. I still delivered mobile complete at every handoff, so that whenever mobile got picked up, nobody had to redesign it under pressure. For pinned gift messages that meant mobile matched desktop end to end — same layout, same behavior.</span>
-                <span lang="zh">我们的模式是 Web 优先:先做 Web 端线框图,过稿后再由已确认的设计延展到移动端——一比一缩放,或在小屏幕确有必要时做简化。KICK 的观众和主播大多在 Web 端,加上开发人力有限,移动端是在可用性、可行性与时间允许时才灵活上线,并没有固定排期。但我每次交付时都会把移动端设计做完整,这样一旦移动端排上开发,就没有人需要在压力下临时返工重做。以置顶礼物消息为例,移动端与桌面端完全一致——布局相同,行为也相同。</span>
+                <span lang="en">The Cheer Panel kept a live preview and five preset Kick tiers (1, 100, 1,000, 5,000, 10,000), reachable by clicking the Kicks icon or typing a chat command. Custom amounts snap to the nearest tier. Balance shows in both the top nav and the panel, so viewers always know whether they can afford to cheer — and an insufficient balance rounds up to the nearest bundle instead of dead-ending the moment.</span>
+                <span lang="zh">打赏面板保留了实时预览,以及五个预设的 Kicks 档位(1、100、1,000、5,000、10,000),可通过点击 Kicks 图标或输入聊天指令打开。自定义金额会自动匹配到最接近的档位。余额同时显示在顶部导航栏与面板中,让观众随时清楚自己是否有余额打赏;余额不足时会自动向上取整到最接近的充值包,而不是让这一刻直接卡死。</span>
               </div>
             </div>
-            <div class="field"><div class="flabel"><span lang="en">Why this slide</span><span lang="zh">为何设为此页</span></div>
-              <div class="fval"><span lang="en">Sets up the constraint that drives SLIDE-08: with a thin engineering team and two surfaces, anything built twice was a risk.</span><span lang="zh">为 SLIDE-08 铺设前提:在开发人力紧张、又要覆盖两端的情况下,任何需要做两遍的东西都是风险。</span></div>
+            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
+              <div class="fval"><span lang="en">Shipped Cheer Panel — needs export, see ASSET-01</span><span lang="zh">上线版打赏面板——待导出,见 ASSET-01</span></div>
             </div>
           </div>
         </details>
@@ -423,69 +426,105 @@
         <details class="slide" id="SLIDE-08">
           <summary>
             <div class="summary-row1"><span class="id">SLIDE-08</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
-            <div class="summary-row2"><span class="slide-title"><span lang="en">Two gift-message designs became one component — and seeing it live told us the tier colors were wrong.</span><span lang="zh">两套礼物消息设计合并为一个组件——而在实际流程中一看,才发现档位配色是错的。</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">Bigger gifts took more of the room — the part that finally answered "why would anyone send this?"</span><span lang="zh">礼物越大,占据的场面就越大——这才真正回答了"观众为什么要发送这个?"</span></span></div>
           </summary>
           <div class="slide-body">
             <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
               <div class="fval">
-                <span lang="en">That same constraint drove the build's biggest revision. Originally the gift message existed as two separate designs. We consolidated them into one component reused across preview, chat, and the pinned card — less to build, easier to maintain through MVP and beyond. Testing the visuals in the live flow then showed the tier-to-color mapping wasn't reading correctly, so we kept the palette and reshuffled which color belonged to which tier.</span>
-                <span lang="zh">同样的约束,也带来了开发阶段最大的一次调整。礼物消息最初存在两套独立设计,我们把它们合并为一个组件,在预览、聊天和置顶卡片三处复用——开发量更小,MVP 及后续迭代的维护也更轻。随后在实际流程中测试视觉效果时发现,档位与颜色的对应关系读起来并不对,于是我们保留了原有色板,只重新调整了各档位对应的颜色。</span>
+                <span lang="en">Higher tiers trigger bigger animations and claim more visible chat real estate. Large gifts also get a pinned card — avatar, amount, and a gradient countdown — in a time-based queue under the leaderboard, borrowing from YouTube's way of spotlighting big moments; click to expand the full message. This is the direct answer to the two objections that killed V2: a cheer can no longer be lost in a busy chat, and the recognition is the reward.</span>
+                <span lang="zh">档位越高,触发的动画就越大,占据的聊天区域也越明显。大额礼物还会以置顶卡片的形式呈现——头像、金额、渐变倒计时条——出现在排行榜下方的时间序列队列中,借鉴了 YouTube 突出重大时刻的做法;点击即可展开完整消息。这正是对当初否掉 V2 的那两条质疑的直接回应:打赏不会再淹没在繁忙的聊天流里,而"被认可"本身就是那个奖励。</span>
               </div>
             </div>
             <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
-              <div class="fval"><span lang="en">Before/after of the two-design → one-component consolidation — needs production, see ASSET-03</span><span lang="zh">"两套设计→一个组件"的前后对比——待制作,见 ASSET-03</span></div>
-            </div>
-            <div class="field"><div class="flabel"><span lang="en">Why this slide</span><span lang="zh">为何设为此页</span></div>
-              <div class="fval"><span lang="en">This is the plan's one real design-iteration beat: before → evidence → changed decision → after.</span><span lang="zh">这是本次故事中唯一一处真实的"设计迭代"环节:改前 → 发现问题 → 调整决策 → 改后。</span></div>
+              <div class="fval"><span lang="en">Pinned gift message + chat takeover — needs export, see ASSET-01</span><span lang="zh">置顶礼物消息与聊天区高光——待导出,见 ASSET-01</span></div>
             </div>
           </div>
         </details>
 
         <details class="slide" id="SLIDE-09">
           <summary>
-            <div class="summary-row1"><span class="id">SLIDE-09</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
-            <div class="summary-row2"><span class="slide-title"><span lang="en">It shipped mid-timeline, gave viewers a real reason to send, and became the system other Kicks features build on.</span><span lang="zh">项目在时间线中段完成交付,给了观众真正想发送的理由,并成为后续 Kicks 相关功能的基础系统。</span></span></div>
+            <div class="summary-row1"><span class="id">SLIDE-09</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">Web shipped first — so I handed off mobile complete before it was ever scheduled.</span><span lang="zh">Web 端先上线——所以我在移动端排期之前,就把它的设计一并交付了。</span></span></div>
           </summary>
           <div class="slide-body">
             <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
               <div class="fval">
-                <span lang="en">Kicks launched despite starting the redesign already behind schedule. For the first time, viewers had a mechanic that rewarded being seen, not just spending — and it read as genuinely distinct from Twitch's model, which was less the goal than a signal we'd found the real problem. Later features like Goal Setting and Bounties built directly on its Kicks-cost logic and tier language.</span>
-                <span lang="zh">尽管重新设计是在项目已经延期的情况下才启动,Kicks 最终还是顺利上线。观众第一次拥有了一种奖励"被看见"而不只是"花钱多少"的机制——它在体验上也确实与 Twitch 的模式明显不同,但这更多是"找对了真正问题"的信号,而不是设计的初衷本身。后续的 Goal Setting、Bounties 等功能都直接沿用了 Kicks 的计费逻辑与档位语言。</span>
+                <span lang="en">Our pattern was web-first: wireframes for web, approval, then mobile adapted from the approved design — scaled one-to-one, or simplified where the smaller surface demanded it. Most KICK viewers and streamers were on web, and with limited engineering capacity mobile shipped when availability and timing allowed rather than on a fixed date. I still delivered mobile complete at every handoff, so whenever it got picked up nobody had to redesign under pressure. For pinned gift messages that meant mobile matched desktop end to end — the parity I'd argued for in week five.</span>
+                <span lang="zh">我们的模式是 Web 优先:先做 Web 端线框图,过稿后再由已确认的设计延展到移动端——一比一缩放,或在小屏幕确有必要时做简化。KICK 的观众和主播大多在 Web 端,加上开发人力有限,移动端是在人力与时间允许时才上线,并没有固定排期。但我每次交付时都会把移动端设计做完整,这样一旦它排上开发,就没有人需要在压力下临时返工。以置顶礼物消息为例,移动端与桌面端完全一致——也就是我在第五周据理力争的那个一致性。</span>
               </div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Why this slide</span><span lang="zh">为何设为此页</span></div>
+              <div class="fval"><span lang="en">Closes the parity thread opened in SLIDE-04, and sets up the constraint behind SLIDE-10: with a thin team and two surfaces, anything built twice was a risk.</span><span lang="zh">收束 SLIDE-04 埋下的一致性伏笔,同时为 SLIDE-10 铺设约束:人力紧张又要覆盖两端时,任何需要做两遍的东西都是风险。</span></div>
             </div>
           </div>
         </details>
 
         <details class="slide" id="SLIDE-10">
           <summary>
-            <div class="summary-row1"><span class="id">SLIDE-10</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
-            <div class="summary-row2"><span class="slide-title"><span lang="en">Week one: seven-figure volume — and almost all of it in claps, not patronage.</span><span lang="zh">上线第一周:交易额达七位数——但几乎全部是"鼓掌",而非"赞助"。</span></span></div>
+            <div class="summary-row1"><span class="id">SLIDE-10</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">Two gift-message designs became one component — and seeing it live told us the tier colors were wrong.</span><span lang="zh">两套礼物消息设计合并为一个组件——而在实际流程中一看,才发现档位配色是错的。</span></span></div>
           </summary>
           <div class="slide-body">
             <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
               <div class="fval">
-                <span lang="en">Kicks generated seven-figure transaction volume in its first week. The real insight was in the breakdown: repeat-sending clustered almost entirely on the cheapest tier. Viewers weren't using Kicks as patronage — they were using it as reaction. It confirmed the workshop's read on the behavior, and it changed how the team talked about what to build next: make the cheap, expressive sends feel as good as possible rather than chase high-value ones.</span>
-                <span lang="zh">Kicks 上线首周便产生了七位数的交易额。真正有价值的洞察藏在分布里:重复发送几乎完全集中在最低档位。观众并不是把 Kicks 当作"赞助",而是当作一种"反应"。这既印证了工作坊对用户行为的判断,也改变了团队后续讨论要做什么的方向:与其追逐高价值打赏,不如把低价、富有表现力的发送体验做到最好。</span>
+                <span lang="en">That constraint drove the build's biggest revision. The gift message had existed as two separate designs; we consolidated them into one component reused across preview, chat, and the pinned card — less to build, easier to maintain through MVP and beyond. Testing the visuals in the live flow then showed the tier-to-color mapping wasn't reading correctly, so we kept the palette and reshuffled which color belonged to which tier.</span>
+                <span lang="zh">这个约束带来了开发阶段最大的一次调整。礼物消息原本存在两套独立设计,我们把它们合并为一个组件,在预览、聊天和置顶卡片三处复用——开发量更小,MVP 及后续迭代的维护也更轻。随后在实际流程中测试视觉效果时发现,档位与颜色的对应关系读起来并不对,于是我们保留了原有色板,只重新调整了各档位对应的颜色。</span>
               </div>
             </div>
             <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
-              <div class="fval"><span lang="en">Tier-distribution visual — needs production, see ASSET-04</span><span lang="zh">档位分布可视化——待制作,见 ASSET-04</span></div>
+              <div class="fval"><span lang="en">Before/after of the two-design → one-component consolidation — needs export, see ASSET-04</span><span lang="zh">"两套设计→一个组件"的前后对比——待导出,见 ASSET-04</span></div>
             </div>
-            <div class="gap-inline"><span class="gid">GAP-04</span><span lang="en">Exact figures ("seven-figure," cheapest-tier share) are self-reported with no dashboard artifact — decide whether to cite numbers or keep this qualitative.</span><span lang="zh">"七位数""最低档位占比"等具体数字均为口述,没有仪表盘等佐证——需要决定是引用具体数字,还是保持定性描述。</span></div>
-            <div class="gap-inline"><span class="gid">GAP-05</span><span lang="en">Since post-launch changes were limited to visual bug fixes, it's unclear whether this insight actually changed anything shipped — or stayed a learning the team carried forward. Say which; an interviewer will ask.</span><span lang="zh">由于上线后的改动仅限于修复视觉 bug,目前无法确认这个洞察是否真的改变了任何已交付的东西——还是只停留在团队带走的认知层面。需要说清楚是哪一种,面试官一定会追问。</span></div>
+            <div class="field"><div class="flabel"><span lang="en">Why this slide</span><span lang="zh">为何设为此页</span></div>
+              <div class="fval"><span lang="en">The plan's one real design-iteration beat: before → evidence → changed decision → after.</span><span lang="zh">本次故事中唯一一处真实的"设计迭代"环节:改前 → 发现问题 → 调整决策 → 改后。</span></div>
+            </div>
           </div>
         </details>
 
         <details class="slide" id="SLIDE-11">
           <summary>
             <div class="summary-row1"><span class="id">SLIDE-11</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
-            <div class="summary-row2"><span class="slide-title"><span lang="en">What I'd protect next time: argue for measurement as a delivery requirement, not a designer's preference.</span><span lang="zh">下次我会守住的一点:把"衡量"当作交付要求去争取,而不是设计师的个人偏好。</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">It shipped mid-timeline and became the system other Kicks features build on.</span><span lang="zh">项目在时间线中段完成交付,并成为后续 Kicks 相关功能的基础系统。</span></span></div>
           </summary>
           <div class="slide-body">
             <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
               <div class="fval">
-                <span lang="en">We had no A/B testing process — design and engineering ran internal QA rounds before and after launch, and post-launch changes were essentially visual bug fixes rather than responses to how people used it. So the week-one insight arrived with nowhere to go. I'd advocated for testing at launch and didn't win it, and I've since concluded I argued it as a designer's preference instead of as the thing that decides whether the next feature is a guess. Two things I'd hold onto: run the behavioral workshop before five rounds of rejection, and agree what we're measuring — and how we'll act on it — before anything ships.</span>
-                <span lang="zh">我们当时没有 A/B testing 流程——设计和开发在上线前后各做一轮内部 QA,而上线后的改动基本上是修复视觉 bug,而不是针对用户实际使用方式做出的调整。所以首周那个洞察出现时,它其实无处可去。我曾争取过上线时做测试,但没有争取成功;现在回头看,我意识到自己当时是把它当作"设计师的偏好"来讲的,而不是把它讲成"决定下一个功能是不是在靠猜"的关键。有两件事我会一直坚持:把探究用户行为的工作坊放在五轮被否决之前做,以及在任何东西上线之前,就先谈妥我们要衡量什么、拿到结果后要怎么行动。</span>
+                <span lang="en">Kicks launched despite the redesign starting from a position already behind schedule. It shipped as a coherent system rather than a one-off screen — later features like Goal Setting and Bounties built directly on its Kicks-cost logic and tier language.</span>
+                <span lang="zh">尽管重新设计是在项目已经落后于排期的情况下才启动,Kicks 最终还是顺利上线。它作为一套完整的系统交付,而不是一次性的界面——后续的 Goal Setting、Bounties 等功能都直接沿用了 Kicks 的计费逻辑与档位语言。</span>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="slide" id="SLIDE-12">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-12</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">Week one: seven-figure volume — and almost all of it in claps, not patronage.</span><span lang="zh">上线第一周:交易额达七位数——但几乎全部是"鼓掌",而非"赞助"。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">Kicks generated seven-figure transaction volume in its first week. The insight was in the breakdown: repeat-sending clustered almost entirely on the cheapest tier. Viewers weren't using Kicks as patronage — they were using it as reaction, which confirmed the read on the behavior. With no A/B testing process and post-launch changes limited to visual bug fixes, though, that finding had nowhere to go but into how the team talked about what to build next.</span>
+                <span lang="zh">Kicks 上线首周便产生了七位数的交易额。真正的洞察藏在分布里:重复发送几乎完全集中在最低档位。观众并不是把 Kicks 当作"赞助",而是当作一种"反应"——这印证了我们对用户行为的判断。但由于当时没有 A/B testing 流程,上线后的改动也仅限于修复视觉 bug,这个发现除了影响团队后续讨论要做什么之外,并没有别的去处。</span>
+              </div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
+              <div class="fval"><span lang="en">Tier-distribution visual — needs production, see ASSET-05</span><span lang="zh">档位分布可视化——待制作,见 ASSET-05</span></div>
+            </div>
+            <div class="gap-inline"><span class="gid">GAP-04</span><span lang="en">Exact figures ("seven-figure," cheapest-tier share) are self-reported with no dashboard artifact — decide whether to cite numbers or keep this qualitative.</span><span lang="zh">"七位数""最低档位占比"等具体数字均为口述,没有仪表盘等佐证——需要决定是引用具体数字,还是保持定性描述。</span></div>
+            <div class="gap-inline"><span class="gid">GAP-05</span><span lang="en">Did this insight change anything that actually shipped — a roadmap item, a later feature, tier pricing — or did it stay a learning? Say which; an interviewer will ask.</span><span lang="zh">这个洞察是否真的改变了任何已交付的东西——某个排期项、后续功能、档位定价——还是只停留在认知层面?需要说清楚是哪一种,面试官一定会追问。</span></div>
+          </div>
+        </details>
+
+        <details class="slide" id="SLIDE-13">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-13</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">I stopped shipping designs I couldn't defend.</span><span lang="zh">从那以后,我不再交出自己无法辩护的设计。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Content</span><span lang="zh">内容</span></div>
+              <div class="fval">
+                <span lang="en">What nearly sank this project was producing faster than I understood. I could execute a PRD, but I couldn't say why any of it was right — so every review failed on the same point, and no number of new drafts fixed it. What changed the outcome was stopping to define the behavior we were designing for, in language I could hold up under questioning. I now treat that as the first deliverable: if I can't explain in one sentence why a design is right, it isn't ready — however finished it looks.</span>
+                <span lang="zh">这个项目差点翻船的原因,是我产出的速度超过了我理解的速度。我能执行 PRD,却说不出其中任何一处凭什么是对的——所以每次评审都栽在同一个点上,再多的新稿也解决不了。真正改变结果的,是我停下来,把我们究竟在为什么样的行为做设计定义清楚,并且用经得起追问的语言表述出来。现在我把这件事当作第一交付物:如果我没法用一句话说清一个设计为什么是对的,那它就还没准备好——不管它看上去多完整。</span>
               </div>
             </div>
           </div>
@@ -496,7 +535,7 @@
 
     <section id="checklist">
       <h2 class="section-title"><span lang="en">Evidence checklist</span><span lang="zh">证据清单</span></h2>
-      <p class="section-sub"><span lang="en">The eight highest-leverage items to verify or produce next.</span><span lang="zh">接下来最值得优先核实或制作的八项内容。</span></p>
+      <p class="section-sub"><span lang="en">The highest-leverage items to verify or produce next.</span><span lang="zh">接下来最值得优先核实或制作的内容。</span></p>
       <div class="wrap-table">
       <table class="checklist">
         <thead>
@@ -507,31 +546,34 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td><a class="id-link" href="#SLIDE-02">SLIDE-02</a></td><td><span lang="en">Five stakeholder proposals rejected — self-reported, no meeting notes or deck cited</span><span lang="zh">五版方案被否——为口述,未引用会议记录或提案文件</span></td><td><span class="chip stated-only">stated-only</span></td></tr>
-          <tr><td><a class="id-link" href="#SLIDE-04">SLIDE-04</a></td><td><span lang="en">Reframe: spend size → being seen</span><span lang="zh">重新定义:花费金额 → 被看见</span></td><td><span class="chip stated-only">stated-only</span></td></tr>
-          <tr><td><a class="id-link" href="#SLIDE-05">SLIDE-05</a></td><td><span lang="en">Cheer Panel tier mechanics</span><span lang="zh">打赏面板的档位机制</span></td><td><span class="chip supported">supported</span></td></tr>
-          <tr><td><a class="id-link" href="#SLIDE-06">SLIDE-06</a></td><td><span lang="en">Pinned gift message mechanics</span><span lang="zh">置顶礼物消息机制</span></td><td><span class="chip supported">supported</span></td></tr>
-          <tr><td><a class="id-link" href="#SLIDE-07">SLIDE-07</a></td><td><span lang="en">Web-first workflow, mobile complete at handoff</span><span lang="zh">Web 优先流程,交付时移动端设计完整</span></td><td><span class="chip supported">supported</span></td></tr>
-          <tr><td><a class="id-link" href="#SLIDE-08">SLIDE-08</a></td><td><span lang="en">Gift Message component consolidation</span><span lang="zh">礼物消息组件合并</span></td><td><span class="chip supported">supported</span></td></tr>
-          <tr><td><a class="id-link" href="#SLIDE-10">SLIDE-10</a></td><td><span lang="en">Week-1 volume + cheapest-tier clustering</span><span lang="zh">首周交易额 + 低档位聚集现象</span></td><td><span class="chip stated-only">stated-only</span></td></tr>
-          <tr><td><a class="id-link" href="#SLIDE-11">SLIDE-11</a></td><td><span lang="en">No A/B testing process; post-launch changes limited to visual bug fixes</span><span lang="zh">无 A/B testing 流程;上线后改动仅限视觉 bug 修复</span></td><td><span class="chip supported">supported</span></td></tr>
-          <tr><td><a class="id-link" href="#GAP-03">GAP-03</a></td><td><span lang="en">No visual artifacts supplied yet for any slide</span><span lang="zh">目前所有页面均无视觉素材</span></td><td><span class="chip missing">missing</span></td></tr>
-          <tr><td><a class="id-link" href="#SLIDE-01">ASSET-01 / 02</a></td><td><span lang="en">Hero artifacts for Cheer Panel + gift chat takeover</span><span lang="zh">打赏面板与聊天区高光的主视觉素材</span></td><td><span class="chip missing"><span lang="en">production needed</span><span lang="zh">待制作</span></span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-02">SLIDE-02</a></td><td><span lang="en">V1 wireframe + Twitch reference — both artifacts in hand</span><span lang="zh">V1 线框图 + Twitch 参考截图——两份素材均已在手</span></td><td><span class="chip supported">supported</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-03">SLIDE-03</a></td><td><span lang="en">The design head's three objections — recalled, not documented</span><span lang="zh">Design head 的三条质疑——凭回忆,无书面记录</span></td><td><span class="chip stated-only">stated-only</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-04">SLIDE-04</a></td><td><span lang="en">Eight versions, two head-level rejections, the vocabulary breakdown</span><span lang="zh">八个版本、两次 head 层面的否决、术语失控</span></td><td><span class="chip stated-only">stated-only</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-07">SLIDE-07/08</a></td><td><span lang="en">Cheer Panel tiers + pinned gift message mechanics</span><span lang="zh">打赏面板档位机制 + 置顶礼物消息机制</span></td><td><span class="chip supported">supported</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-09">SLIDE-09</a></td><td><span lang="en">Web-first workflow, mobile complete at handoff, ~95% parity standard</span><span lang="zh">Web 优先流程、交付时移动端完整、约 95% 一致性标准</span></td><td><span class="chip supported">supported</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-10">SLIDE-10</a></td><td><span lang="en">Gift Message component consolidation + tier color remap</span><span lang="zh">礼物消息组件合并 + 档位配色重映射</span></td><td><span class="chip supported">supported</span></td></tr>
+          <tr><td><a class="id-link" href="#SLIDE-12">SLIDE-12</a></td><td><span lang="en">Week-1 volume + cheapest-tier clustering</span><span lang="zh">首周交易额 + 低档位聚集现象</span></td><td><span class="chip stated-only">stated-only</span></td></tr>
+          <tr><td><a class="id-link" href="#GAP-03">GAP-03</a></td><td><span lang="en">Final shipped UI — Cheer Panel, gift animation, pinned card (ASSET-01)</span><span lang="zh">最终上线 UI——打赏面板、礼物动画、置顶卡片(ASSET-01)</span></td><td><span class="chip missing">missing</span></td></tr>
         </tbody>
       </table>
       </div>
       <div class="gap-inline" id="GAP-03" style="margin-top:16px;">
         <span class="gid">GAP-03</span>
-        <span lang="en">No screenshots, Figma frames, or mockups have been supplied yet for this project — nearly every slide currently relies on written description alone.</span>
-        <span lang="zh">目前尚未提供任何截图、Figma 页面或原型稿——几乎每一页目前都只能靠文字描述来支撑。</span>
+        <span lang="en">The early wireframe and Twitch reference are strong, but there are no exports of the shipped design yet — so the story can currently show its "before" and not its "after."</span>
+        <span lang="zh">早期线框图和 Twitch 参考很有说服力,但目前还没有最终上线设计的导出图——所以这个故事现在只能展示"改前",展示不了"改后"。</span>
+      </div>
+      <div class="gap-inline" id="GAP-06" style="margin-top:10px;">
+        <span class="gid">GAP-06</span>
+        <span lang="en">Your wireframe's top tier reads 100K while the spec says 10,000. Minor, but both artifacts may end up on screen together — decide which values the final story uses.</span>
+        <span lang="zh">你的线框图上最高档位写的是 100K,而设计文档里是 10,000。虽是小事,但两份素材可能会同时出现在画面上——需要确定最终故事采用哪套数值。</span>
       </div>
     </section>
 
     <section id="decisions">
       <h2 class="section-title"><span lang="en">Review decisions</span><span lang="zh">待确认问题</span></h2>
-      <div class="review-q"><span class="rid">1</span><span lang="en">Roughly how long was the "stuck" period (five rejected proposals) before the workshops — days, weeks, or months? This changes how much weight SLIDE-02 should carry.</span><span lang="zh">五版提案被拒到工作坊之间,"卡壳期"大概持续了多久——是几天、几周,还是几个月?这会影响 SLIDE-02 应该承载多大的分量。</span></div>
-      <div class="review-q"><span class="rid">2</span><span lang="en">Do you have Figma exports or product screenshots for the Cheer Panel, gift animations, and pinned message card we can use as artifacts (ASSET-01 through 03)?</span><span lang="zh">你是否有打赏面板、礼物动画、置顶消息卡片的 Figma 导出图或产品截图,可以用作素材(ASSET-01 至 03)?</span></div>
-      <div class="review-q"><span class="rid">3</span><span lang="en">Given post-launch changes were limited to visual bug fixes — did the cheapest-tier insight actually change anything that shipped (roadmap, a later feature, tier pricing), or did it stay a learning? SLIDE-10 needs the honest version.</span><span lang="zh">考虑到上线后的改动仅限于修复视觉 bug——"低档位聚集"这个洞察是否真的改变了任何已交付的东西(排期、后续某个功能、档位定价),还是只停留在认知层面?SLIDE-10 需要一个诚实的说法。</span></div>
+      <div class="review-q"><span class="rid">1</span><span lang="en">Can you export the shipped UI — Cheer Panel, gift animation, pinned card? The wireframe gives you a genuinely strong "before"; without the "after," SLIDE-07 through SLIDE-10 stay text.</span><span lang="zh">你能导出最终上线的 UI 吗——打赏面板、礼物动画、置顶卡片?线框图已经是很有力的"改前";但没有"改后",SLIDE-07 到 SLIDE-10 就只能停留在文字上。</span></div>
+      <div class="review-q"><span class="rid">2</span><span lang="en">Did the cheapest-tier insight change anything that actually shipped, or did it stay a learning the team carried forward? Either answer works — but SLIDE-12 needs the true one.</span><span lang="zh">"低档位聚集"这个洞察是否真的改变了任何已交付的东西,还是只停留在团队带走的认知层面?两种答案都成立——但 SLIDE-12 需要真实的那一个。</span></div>
+      <div class="review-q"><span class="rid">3</span><span lang="en">Is SLIDE-04 how you want the week-five stretch told? It currently keeps the weight on your own judgment and treats your lead's direction as context — confirm, or tell me to cut the parity thread entirely.</span><span lang="zh">SLIDE-04 里第五周那段,是你希望的讲法吗?目前的写法把重心放在你自己的判断上,lead 的指示只作为背景——请确认,或者告诉我把一致性这条线整个删掉。</span></div>
     </section>
 
     <p class="howto">
@@ -566,7 +608,6 @@
     btn.querySelector('[lang="zh"]').textContent = expanded ? '收起全部' : '展开全部';
   }
 
-  // scroll spy + progress bar
   var tocLinks = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
   var sections = tocLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
   function onScroll(){
@@ -589,7 +630,6 @@
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
-  // open collapsed slide when anchor targets it
   window.addEventListener('hashchange', openTargetSlide);
   function openTargetSlide(){
     var id = location.hash.replace('#','');
