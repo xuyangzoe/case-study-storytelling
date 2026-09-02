@@ -91,14 +91,6 @@ confidence horizon, highs and lows, five-second turn, earned wisdom, and unresol
 questions. Track learning progress separately from organizational traction. For each
 artifact, record its intended message and proof. Do not output the ledger unless useful.
 
-Record the consequence set explicitly, because it is the part most often missing: the
-behavior targeted on each side of the exchange; the risk the design reduces and the
-exact moment it reduces it; the commercial effect it protects, produces, or forecloses;
-the trade-offs accepted and what each cost; and the creator's ambiguity method as
-`action → reason → detail`. Where a source supports only activity and delivery, mark
-each missing consequence as a gap rather than inferring it — a shipped feature does not
-by itself evidence a changed behavior.
-
 Separate validation of the problem, system, interaction model, and feature priority.
 Enthusiasm is not priority; a written claim is not proof.
 
@@ -119,9 +111,6 @@ facts:
 
 - the highest defensible customer or business stake for the first narrative beat after
   the lightweight cover;
-- the specific behavior the design set out to shift, stated for each side;
-- at least one consequence beyond delivery: a risk reduced, a commercial effect, or a
-  changed behavior — with at least one trade-off and its cost;
 - a causal chain from problem through changed decisions to outcome;
 - a real challenge that made success genuinely hard, threatened the outcome, or forced
   a meaningful change; routine friction does not count;
