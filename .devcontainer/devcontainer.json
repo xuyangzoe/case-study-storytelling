@@ -1,0 +1,14 @@
+{
+  "name": "MultiCat staging",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+  "forwardPorts": [4000],
+  "portsAttributes": {
+    "4000": {
+      "label": "MultiCat",
+      "visibility": "public",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "postCreateCommand": "cd app && npm install && npm run build",
+  "postStartCommand": "bash -c 'cd app/server && (SEED_IF_EMPTY=true PORT=4000 nohup node dist/server/src/index.js > /tmp/multicat.log 2>&1 &) ; sleep 1'"
+}

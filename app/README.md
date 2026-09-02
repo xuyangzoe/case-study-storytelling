@@ -45,37 +45,45 @@ Environment: `PORT` (default `4000`), `DATA_FILE` (default `server/data/multicat
 
 ---
 
-## Try it on your phone (free staging link)
+## Try it on your phone
 
-The fastest way to a real URL, no local setup: deploy the free [Render][render] web
-service defined in [`render.yaml`](../render.yaml) at the repo root.
+### Option A — GitHub Codespaces (no new account, no terminal)
+
+Uses the GitHub account you already have. [`.devcontainer/devcontainer.json`](../.devcontainer/devcontainer.json)
+builds the app and starts it automatically, with the port pre-configured to be public.
+
+[**→ Open in a Codespace**](https://github.com/codespaces/new?repo=xuyangzoe/case-study-storytelling&ref=claude/app-from-prd-uc4zbo)
+
+1. Tap the link above (sign into GitHub if it asks — the account that owns this repo).
+2. Tap the green **Create codespace** button. No settings to change.
+3. Wait 1–2 minutes while it builds. A notification then offers **Open in Browser** for
+   port 4000 — tap it. That same URL is what you open on your phone.
+   - If no notification appears: open the **Ports** tab at the bottom of the Codespace
+     window, and tap the 🌐 icon next to port **4000**.
+4. Sign in as `yang@example.com` or `partner@example.com` (any name) for the seeded PRD
+   household, or your own name and email to start fresh.
+
+The Codespace (and its URL) stays up as long as it's open, and GitHub's free personal
+quota (~60 core-hours/month) covers casual testing with no card required. Close the
+Codespace tab when done — it stops on its own after a period of inactivity.
+
+### Option B — deploy to Render (a separate, always-on free service)
+
+Only worth it if Codespaces doesn't work for you — it requires signing up for Render
+specifically. Deploys [`render.yaml`](../render.yaml) at the repo root.
 
 [**→ Deploy to Render**](https://render.com/deploy?repo=https://github.com/xuyangzoe/case-study-storytelling)
 
-1. Click the button above (a free Render account is enough — no card needed for this
-   plan). Render reads `render.yaml`, builds `app/` with `npm install && npm run build`,
-   and starts it with `npm start`.
-2. Wait for the build to finish (a few minutes on the first deploy). Render gives you a
-   URL like `https://multicat-xxxx.onrender.com` — open that on your phone.
-3. Sign in as `yang@example.com` or `partner@example.com` (any name) to see the seeded
-   household from the PRD's examples, or sign in with your own name and email to start a
-   fresh one.
+Click through, wait for the build, then open the `https://multicat-xxxx.onrender.com`
+URL it gives you. Two things about the free tier so nothing looks broken: it **sleeps**
+after ~15 minutes idle (30–60s to wake back up), and **storage isn't persistent** — added
+data disappears on the next wake, which is why `SEED_IF_EMPTY=true` is set in
+`render.yaml` to reload the demo household instead of showing a blank screen.
 
-**Two things about the free tier, so nothing looks broken:**
+### Option C — your own machine + LAN
 
-- **It sleeps.** A free service spins down after ~15 minutes idle; the next open takes
-  30–60 seconds to wake up. Normal — not a crash.
-- **Storage is not persistent.** The free plan has no attached disk, so whatever you add
-  during a session (cats, food, purchases) is gone the next time it spins up from idle —
-  `SEED_IF_EMPTY=true` (set in `render.yaml`) just reloads the same demo household so you
-  never land on a blank screen. For state that survives, attach a persistent disk on a
-  paid plan and point `DATA_FILE` at it, or swap `Store` for a real database.
-
-Prefer a different host, or want to test over your home network with no deploy at all?
-Ask and I'll adjust `render.yaml` for Fly.io/Railway, or walk through `npm run build &&
-npm start` plus your machine's LAN IP instead.
-
-[render]: https://render.com
+No third party at all: `npm install && npm run seed && npm run build && npm start` on
+your laptop, then open `http://<laptop's-LAN-IP>:4000` on your phone over the same WiFi.
 
 ---
 
