@@ -56,10 +56,27 @@ Treat these as defaults. The creator's latest explicit feedback wins.
    feature-priority validation; separate learning from sponsorship, adoption, shipping,
    and business impact. Keep methodology nearby, never inflate unlike counts, and
    distinguish shipped, ready, exploratory, and directional outcomes.
-9. **End with earned wisdom.** Close with one specific learning the creator genuinely
+9. **Name the behavior the design is trying to shift.** State it early, concretely, and
+   for each side of the exchange: who was doing what before, and what they should do
+   instead. "Improve engagement" is not a behavior; "move viewers from watching a moment
+   to being seen backing it" is. Every later design decision is judged against this
+   sentence, so it must be specific enough to be wrong.
+10. **State what changed because of the design, including what it cost.** A case that
+   stops at "it shipped" has described activity, not consequence. Answer, from supplied
+   facts only: what risk the design reduces and at which exact moment; what it protects,
+   produces, or forecloses commercially; what it changes for the people on each side; and
+   what was traded away to get it. Name at least one real trade-off with its cost — a
+   design with no cost was not a decision. Where a consequence is expected rather than
+   observed, say which, and mark the confidence horizon.
+11. **End with earned wisdom.** Close with one specific learning the creator genuinely
    earned: what they now believe, would protect, repeat, or change. Let it point back to
    the story's choices, cost, and learning. Avoid a result recap, generic leadership
    slogan, or universal claim the story did not earn.
+12. **Show how ambiguity was navigated as method, not temperament.** "I'm comfortable
+   with ambiguity" is a personality claim and proves nothing. Give the method as
+   `action → reason → detail`: what the creator does, why that beats the alternative,
+   and the specific instance in this story where they did it. Two or three actions, each
+   anchored to a real moment, beat a list of principles the story never demonstrates.
 
 ## Recognition guide
 
@@ -75,6 +92,12 @@ Use these as diagnostic shapes, not story templates:
   not let its title answer that question before the audience experiences the turn.
 - **Earned wisdom:** consequential choice + cost or uncertainty + learning, expressed in
   the creator's own language. Specific and personal is better than grand and generic.
+- **Process diary:** consecutive beats whose only connective tissue is time — "then we,
+  then we, then we." Test any run of slides by deleting one: if the argument survives
+  intact, that beat was chronology, not cause. Rewrite the run so each beat changes a
+  belief, a decision, or a constraint, and compress what remains into one timeline or
+  the talk track. A round of iteration earns a slide only when its outcome altered what
+  was built next.
 
 ## Writing rules
 
@@ -110,6 +133,11 @@ Use these as diagnostic shapes, not story templates:
 - [ ] The cover orients lightly; the first narrative beat establishes the highest
       defensible stake without leaking later turns.
 - [ ] A real challenge makes success uncertain or forces change, and the ending wisdom is earned.
+- [ ] The behavior the design set out to shift is stated concretely, early, and for each side.
+- [ ] Consequence is stated, not just delivery: risk reduced at a named moment, commercial
+      effect, and at least one real trade-off with its cost. Expected is distinguished from observed.
+- [ ] No run of slides is held together only by chronology; deleting a beat would cost the argument.
+- [ ] Ambiguity is answered as method — action, reason, and the moment in this story that shows it.
 - [ ] Every necessary slide has one job, one claim-bearing title, and one purposeful artifact.
 - [ ] Setup titles preserve later reveals without becoming vague, and payoff titles appear only after they are earned.
 - [ ] Every meaningful change has a supported reason and consequential impact;
