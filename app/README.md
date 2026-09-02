@@ -41,7 +41,41 @@ npm start        # http://localhost:4000
 | `npm run typecheck` | Typechecks both workspaces |
 
 Environment: `PORT` (default `4000`), `DATA_FILE` (default `server/data/multicat.json`),
-`WEB_DIST` (default `web/dist`).
+`WEB_DIST` (default `web/dist`), `SEED_IF_EMPTY` (default off — see below).
+
+---
+
+## Try it on your phone (free staging link)
+
+The fastest way to a real URL, no local setup: deploy the free [Render][render] web
+service defined in [`render.yaml`](../render.yaml) at the repo root.
+
+[**→ Deploy to Render**](https://render.com/deploy?repo=https://github.com/xuyangzoe/case-study-storytelling)
+
+1. Click the button above (a free Render account is enough — no card needed for this
+   plan). Render reads `render.yaml`, builds `app/` with `npm install && npm run build`,
+   and starts it with `npm start`.
+2. Wait for the build to finish (a few minutes on the first deploy). Render gives you a
+   URL like `https://multicat-xxxx.onrender.com` — open that on your phone.
+3. Sign in as `yang@example.com` or `partner@example.com` (any name) to see the seeded
+   household from the PRD's examples, or sign in with your own name and email to start a
+   fresh one.
+
+**Two things about the free tier, so nothing looks broken:**
+
+- **It sleeps.** A free service spins down after ~15 minutes idle; the next open takes
+  30–60 seconds to wake up. Normal — not a crash.
+- **Storage is not persistent.** The free plan has no attached disk, so whatever you add
+  during a session (cats, food, purchases) is gone the next time it spins up from idle —
+  `SEED_IF_EMPTY=true` (set in `render.yaml`) just reloads the same demo household so you
+  never land on a blank screen. For state that survives, attach a persistent disk on a
+  paid plan and point `DATA_FILE` at it, or swap `Store` for a real database.
+
+Prefer a different host, or want to test over your home network with no deploy at all?
+Ask and I'll adjust `render.yaml` for Fly.io/Railway, or walk through `npm run build &&
+npm start` plus your machine's LAN IP instead.
+
+[render]: https://render.com
 
 ---
 

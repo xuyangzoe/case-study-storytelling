@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: multicat
+    runtime: node
+    plan: free
+    rootDir: app
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      # Loads the PRD demo household on boot whenever the store is empty —
+      # the free plan's disk is ephemeral, so this fires on every deploy and
+      # every wake from idle instead of showing a blank app.
+      - key: SEED_IF_EMPTY
+        value: "true"
