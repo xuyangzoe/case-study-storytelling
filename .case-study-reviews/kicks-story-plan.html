@@ -179,6 +179,7 @@
           <li><a href="#SLIDE-10">SLIDE-10</a></li>
           <li><a href="#SLIDE-11">SLIDE-11</a></li>
           <li><a href="#SLIDE-12">SLIDE-12</a></li>
+          <li><a href="#SLIDE-13">SLIDE-13</a></li>
         </ul>
       </li>
       <li><a href="#build"><span lang="en">Evidence to build</span><span lang="zh">需要补齐的证据</span></a></li>
@@ -228,7 +229,7 @@
         </div>
         <div class="assumption-card">
           <div class="label"><span lang="en">Slide count</span><span lang="zh">页数</span></div>
-          <div class="value"><span lang="en">Cover + 12 slides. The four stalled months compress into two beats; the argument does not need every round.</span><span lang="zh">封面 + 12 页。四个月的停滞压缩为两个环节;论点并不需要每一轮细节。</span></div>
+          <div class="value"><span lang="en">Cover + 13 slides. The four stalled months compress into two beats; the argument does not need every round.</span><span lang="zh">封面 + 13 页。四个月的停滞压缩为两个环节;论点并不需要每一轮细节。</span></div>
         </div>
       </div>
     </section>
@@ -273,7 +274,7 @@
 
     <section id="storymap">
       <h2 class="section-title"><span lang="en">Story map</span><span lang="zh">故事地图</span></h2>
-      <p class="section-sub"><span lang="en">Cover, then twelve slides in causal order. Evidence status is marked in the top-right of each row.</span><span lang="zh">先是封面,随后十二页按因果顺序展开。每一行右上角标注了证据状态。</span></p>
+      <p class="section-sub"><span lang="en">Cover, then thirteen slides in causal order. Evidence status is marked in the top-right of each row.</span><span lang="zh">先是封面,随后十三页按因果顺序展开。每一行右上角标注了证据状态。</span></p>
       <div class="legend">
         <span><span class="dot" style="background:var(--supported)"></span><span lang="en">supported</span><span lang="zh">有据可查</span></span>
         <span><span class="dot" style="background:var(--stated)"></span><span lang="en">stated-only</span><span lang="zh">仅口述未验证</span></span>
@@ -494,7 +495,32 @@
 
         <details class="slide" id="SLIDE-11">
           <summary>
-            <div class="summary-row1"><span class="id">SLIDE-11</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row1"><span class="id">SLIDE-11</span><span class="chip supported"><span lang="en">supported</span><span lang="zh">有据可查</span></span></div>
+            <div class="summary-row2"><span class="slide-title"><span lang="en">What we kept from Twitch, what we replaced, and where we went that it doesn't.</span><span lang="zh">哪些沿用了 Twitch、哪些被替换掉了,以及我们走到了它没去过的地方。</span></span></div>
+          </summary>
+          <div class="slide-body">
+            <div class="field"><div class="flabel"><span lang="en">Kept — deliberately</span><span lang="zh">刻意沿用的</span></div>
+              <div class="fval"><span lang="en">The currency-and-tier mechanic, the chat-command entry, the panel model. Viewers move between platforms; making them relearn how to support someone buys nothing. Keeping the mechanic familiar is what freed the invention to go somewhere that mattered.</span><span lang="zh">货币与档位机制、聊天指令入口、面板模型。观众会在不同平台之间流动,让他们重新学习"怎么支持一个人"换不来任何东西。正是保留了熟悉的机制,才把创新的余地腾给了真正重要的地方。</span></div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Replaced</span><span lang="zh">替换掉的</span></div>
+              <div class="fval"><span lang="en">Twitch dead-ends an empty balance — "you have 0 Bits and cannot send a Cheer." Ours rounds up to the nearest bundle inside the flow, with an adjustable quantity and a per-transaction cap, so the impulse survives the top-up. And a flat cheer message became a visibility ladder: a pinned queue that is time-based and first-in-first-out, each card carrying avatar, amount, and a gradient countdown, expandable to the full message — so several big moments coexist instead of one owning the room.</span><span lang="zh">Twitch 在余额为零时是死路一条——"你有 0 Bits,无法发送打赏"。我们的做法是在流程内自动向上取整到最接近的充值包,数量可调,并设有单笔上限,让那股冲动能熬过充值这一步。而扁平的打赏消息则变成了一架可见度阶梯:一个基于时间、先进先出的置顶队列,每张卡片带有头像、金额和渐变倒计时条,可展开查看完整消息——这样多个高光时刻可以共存,而不是被某一个人独占全场。</span></div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Extended</span><span lang="zh">延伸到的</span></div>
+              <div class="fval"><span lang="en">Twitch's model doesn't go to a television. Ours had to: the shipped system covers web, mobile, and TV, so the same tier ladder had to hold up on a surface with no cursor and no keyboard.</span><span lang="zh">Twitch 的模型没有延伸到电视上。我们的必须:上线的系统覆盖 Web、移动端与 TV 端,所以同一架档位阶梯必须在一个没有光标、没有键盘的界面上依然成立。</span></div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Artifact</span><span lang="zh">素材</span></div>
+              <div class="fval"><span lang="en">Twitch's zero-balance state beside yours — you already have the reference screenshot (ASSET-02)</span><span lang="zh">Twitch 的零余额状态与你的方案并置——参考截图你已经有了(ASSET-02)</span></div>
+            </div>
+            <div class="gap-inline"><span class="gid">GAP-08</span><span lang="en">TV is in your shipped scope but nothing in the source says what you changed for it. Ten-foot UI is experience few designers have — write down what the remote and the viewing distance forced you to alter, or this stays a one-line mention of your rarest skill.</span><span lang="zh">TV 端在你的交付范围内,但现有素材完全没有说明你为它改了什么。十英尺界面是很少设计师有过的经验——把遥控器和观看距离逼着你改动的地方写下来,否则你最稀缺的一项能力就只是一句带过。</span></div>
+            <div class="field"><div class="flabel"><span lang="en">Why this slide</span><span lang="zh">为何设为此页</span></div>
+              <div class="fval"><span lang="en">The story opens with "the brief was match Twitch, and I matched it." Without this beat the audience never learns how far the final version travelled, and the whole case stays vulnerable to "so you copied it?"</span><span lang="zh">故事开篇是"需求是对齐 Twitch,我照做了"。没有这一环节,听众永远不知道最终版本走出了多远,整个 case 也就始终经不起那句"所以你还是抄的?"</span></div>
+            </div>
+          </div>
+        </details>
+
+        <details class="slide" id="SLIDE-12">
+          <summary>
+            <div class="summary-row1"><span class="id">SLIDE-12</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
             <div class="summary-row2"><span class="slide-title"><span lang="en">What it changed — and what I traded to get it.</span><span lang="zh">它改变了什么——以及我为此交换掉了什么。</span></span></div>
           </summary>
           <div class="slide-body">
@@ -504,10 +530,16 @@
                 <span lang="zh">两个,都发生在"钱要掏出来"的那一刻。放弃风险:过去余额不足的观众会在冲动中途撞上死路;现在面板会在流程内自动向上取整到最接近的充值包,让一个两秒钟的决定不必先熬过一段绕路。价值感落空风险:在繁忙的直播间里,一条付费消息如果看起来和免费聊天没区别,那就是花了钱却什么也没换来——档位阶梯保证了你付了多少,全场就看见多少。</span>
               </div>
             </div>
-            <div class="field"><div class="flabel"><span lang="en">Commercial effect</span><span lang="zh">商业影响</span></div>
+            <div class="field"><div class="flabel"><span lang="en">Impact — observed</span><span lang="zh">影响——已观察到</span></div>
               <div class="fval">
-                <span lang="en">Week one produced seven-figure transaction volume, and repeat sends clustered almost entirely on the cheapest tier — viewers used Kicks as reaction, not patronage, which is what the visibility model predicted. Revenue here is senders × frequency × value; the ladder gives a reason to climb, the cheap tier keeps frequency high, and the data said frequency was the load-bearing half. The tier language and Kicks-cost logic then became the base other features built on rather than each inventing its own economy.</span>
-                <span lang="zh">上线首周产生了七位数交易额,而重复发送几乎完全集中在最低档位——观众把 Kicks 当作"反应"而非"赞助",这正是可见度模型预测的结果。这里的营收 = 发送人数 × 频次 × 单次金额;阶梯给了向上走的理由,低价档位维持了频次,而数据说明真正承重的是频次那一半。此后,档位语言与 Kicks 计费逻辑成为其他功能的共同底座,而不是各自另起一套经济系统。</span>
+                <span lang="en">Week one produced seven-figure transaction volume, and repeat sends clustered almost entirely on the cheapest tier: viewers used Kicks as reaction, not patronage. That is the behavior from SLIDE-01, moving. Revenue here is senders × frequency × value — the ladder gives a reason to climb, the cheap tier keeps frequency high, and the data said frequency was the load-bearing half, not size.</span>
+                <span lang="zh">上线首周产生了七位数交易额,而重复发送几乎完全集中在最低档位:观众把 Kicks 当作"反应"而非"赞助"。这正是 SLIDE-01 那个行为在移动。这里的营收 = 发送人数 × 频次 × 单次金额——阶梯给了向上走的理由,低价档位维持了频次,而数据说明真正承重的是频次,不是单次金额。</span>
+              </div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">Impact — beyond the feature</span><span lang="zh">影响——超出功能本身</span></div>
+              <div class="fval">
+                <span lang="en">Two layers, and both should be labelled as expected rather than measured. Platform economy: the tier language and Kicks-cost logic became the base Goals and Bounties built on, so later features inherited an economy instead of each inventing one. Build economics: one gift-message component serving preview, chat, and pinned across three platforms is the difference between building it once and building it nine times, for a team that did not have the capacity to do the latter.</span>
+                <span lang="zh">两层,而且都应标注为"预期"而非"已测量"。平台经济层面:档位语言与 Kicks 计费逻辑成为 Goals 和 Bounties 的底座,后续功能继承的是一套经济系统,而不是各自另起一套。构建经济层面:一个礼物消息组件同时服务预览、聊天与置顶三处、覆盖三个平台,这是"做一次"和"做九次"的区别——而当时的团队并没有做九次的人力。</span>
               </div>
             </div>
             <div class="field"><div class="flabel"><span lang="en">Traded away</span><span lang="zh">交换掉的东西</span></div>
@@ -517,12 +549,13 @@
               </div>
             </div>
             <div class="gap-inline"><span class="gid">GAP-04</span><span lang="en">The week-one figures are self-reported with no dashboard artifact, and post-launch changes were limited to visual bug fixes — so present the behavior finding as observed and anything downstream of it as expected, not delivered.</span><span lang="zh">首周数据均为口述,没有仪表盘佐证;上线后的改动也仅限于修复视觉 bug——所以行为层面的发现可以讲成"已观察到",而由它衍生的一切只能讲成"预期",不能讲成"已兑现"。</span></div>
+            <div class="care-inline"><span class="gid">CARE</span><span lang="en">Four fields is four jobs. In the built deck this is one slide carrying the observed behavior and its cost, with the two impact layers in the talk track — or two slides. Do not put all four on screen at once.</span><span lang="zh">四个字段就是四项任务。在实际的 deck 里,这应该是一页承载"已观察到的行为 + 代价",两层影响放进口头讲述——或者干脆拆成两页。不要让四项同时出现在画面上。</span></div>
           </div>
         </details>
 
-        <details class="slide" id="SLIDE-12">
+        <details class="slide" id="SLIDE-13">
           <summary>
-            <div class="summary-row1"><span class="id">SLIDE-12</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
+            <div class="summary-row1"><span class="id">SLIDE-13</span><span class="chip stated-only"><span lang="en">stated-only</span><span lang="zh">仅口述</span></span></div>
             <div class="summary-row2"><span class="slide-title"><span lang="en">How I work now when the problem isn't defined yet.</span><span lang="zh">现在,当问题还没有被定义时,我会怎么做。</span></span></div>
           </summary>
           <div class="slide-body">
@@ -530,6 +563,12 @@
               <div class="fval">
                 <span lang="en">Three things, each one this project taught me the hard way. <strong>I bring the model and its vocabulary to the room before any mockup</strong> — because eleven versions failed on a definition nobody shared, and no drawing fixes an undefined model; in practice that's a one-page terms sheet, agreed before I open Figma. <strong>I take a direction to engineering before I propose it</strong> — because an unbuildable design costs a review cycle and the credibility to spend the next one; here that was two engineers and a scan for any product shipping the pattern. <strong>And I go into review expecting to leave with a different model than I walked in with</strong> — because the review that finally moved this project was the one where I let mine be replaced.</span>
                 <span lang="zh">三件事,每一件都是这个项目用代价教给我的。<strong>在任何稿子之前,先把模型和它的术语带进会议室</strong>——因为十一个版本都栽在一个没人共享的定义上,而没有任何一张图能修好一个未被定义的模型;具体做法是一页术语表,在打开 Figma 之前就达成共识。<strong>在提案之前,先把方向拿给开发</strong>——因为一个做不出来的设计,赔上的是一个评审周期,以及下一个周期的信用;在这里就是两位开发,加一次"市面上有没有产品这么做过"的扫描。<strong>以及,带着"可能会带另一个模型离开"的预期进评审</strong>——因为真正推动了这个项目的那一次评审,恰恰是我允许自己的模型被替换掉的那一次。</span>
+              </div>
+            </div>
+            <div class="field"><div class="flabel"><span lang="en">How I learned it</span><span lang="zh">我是怎么学会的</span></div>
+              <div class="fval">
+                <span lang="en">Not from a course or a brief — from being unable to answer. Four months of reviews kept returning me to questions I couldn't hold: what is a cheermote, why this tier, what does a viewer get. Each failure told me precisely which part of the model I didn't own, which is a slower teacher than a mentor but a more specific one. The workshop worked because by then I knew exactly what I was missing, so a reframe had somewhere to land.</span>
+                <span lang="zh">不是从课程或简报里学的,而是从"答不上来"里学的。四个月的评审反复把我推回那些我握不住的问题:cheermote 到底是什么、为什么是这个档位、观众究竟得到了什么。每一次失败都精确地告诉我,模型里哪一块我并没有真正掌握——这个老师比 mentor 慢,但比 mentor 具体。工作坊之所以起作用,是因为到那时我已经清楚自己缺的是什么,所以那次重构才有地方落下。</span>
               </div>
             </div>
             <div class="care-inline"><span class="gid">CARE</span><span lang="en">Keep each action tied to its moment in this story. Detached from the evidence, these become the generic principles slide every portfolio has — and it is the anchoring, not the wording, that makes them credible.</span><span lang="zh">每一条都要牢牢挂在这个故事里的具体时刻上。一旦脱离证据,它们就会变成每份作品集都有的那页"设计原则"——让它们可信的是这份锚定,而不是措辞。</span></div>
